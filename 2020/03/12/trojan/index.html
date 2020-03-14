@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/12/trojan/trojan_1.PNG">
 <meta property="og:image" content="http://yoursite.com/2020/03/12/trojan/trojan_2.PNG">
 <meta property="article:published_time" content="2020-03-12T06:58:08.000Z">
-<meta property="article:modified_time" content="2020-03-13T14:59:15.595Z">
+<meta property="article:modified_time" content="2020-03-14T08:46:50.287Z">
 <meta property="article:author" content="xfFelix">
 <meta property="article:tag" content="科学上网">
 <meta name="twitter:card" content="summary">
@@ -413,6 +413,9 @@
 
 <h3 id="下载Windows客户端"><a href="#下载Windows客户端" class="headerlink" title="下载Windows客户端"></a>下载Windows客户端</h3><p>安装完成后，会展示一条下载地址，复制地址，并下载下来即可</p>
 <p>如果你真的忘记下载了，那么进入/usr/share/nginx/html/目录下，找到一个乱码文件夹，进入会看到客户端文件，使用sftp下载下来即可</p>
+<h3 id="下载Android客户端"><a href="#下载Android客户端" class="headerlink" title="下载Android客户端"></a>下载Android客户端</h3><p>选择app-release.apk</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">http://bit.ly/382uDNJ</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="搭配浏览器插件使用"><a href="#搭配浏览器插件使用" class="headerlink" title="搭配浏览器插件使用"></a>搭配浏览器插件使用</h3><p>解压缩下载的<code>trojan-cli.zip</code>的压缩包，进入文件夹，双击<code>start.bat</code>，开启Trojan服务，Trojan会监听本地1080端口。然后下载<code>SwitchyOmega</code></p>
 <p>下载插件：<strong>SwitchyOmega</strong></p>
 <p>首先配置<strong>proxy</strong>：</p>
@@ -423,8 +426,10 @@
 <p>规则1：<code>https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt</code></p>
 <p>规则2：<code>https://raw.githubusercontent.com/atrandys/proV/master/fgfwlist.txt</code></p>
 <h2 id="电脑上其他软件如何使用Trojan"><a href="#电脑上其他软件如何使用Trojan" class="headerlink" title="电脑上其他软件如何使用Trojan"></a>电脑上其他软件如何使用Trojan</h2><ol>
-<li>如果软件支持配置socks5，直接指向127.0.0.1：1080即可<br></li>
-<li>如果软件不支持配置socks5，可选择sstap/sockscap64/supercap等软件，曲线实现代理</li>
+<li><p>如果软件支持配置socks5，直接指向127.0.0.1：1080即可</p>
+</li>
+<li><p>如果软件不支持配置socks5，可选择<a href="/2020/03/14/v2rayN/" title="v2rayN">v2rayN</a>/sstap/sockscap64/supercap等软件，曲线实现代理</p>
+</li>
 </ol>
 <h2 id="常见问题总结"><a href="#常见问题总结" class="headerlink" title="常见问题总结"></a>常见问题总结</h2><p>Trojan客户端打开无法运行，提示缺少找不到vcruntime140.dll或找不到msvcp140.dll</p>
 <blockquote>
@@ -584,7 +589,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -646,7 +651,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#感谢"><span class="nav-number">1.</span> <span class="nav-text">感谢</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统要求以及脚本介绍"><span class="nav-number">2.</span> <span class="nav-text">系统要求以及脚本介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BBRPlus安装"><span class="nav-number">3.</span> <span class="nav-text">BBRPlus安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BBR一键安装代码"><span class="nav-number">3.1.</span> <span class="nav-text">BBR一键安装代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Trojan安装"><span class="nav-number">4.</span> <span class="nav-text">Trojan安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用一键安装脚本"><span class="nav-number">4.1.</span> <span class="nav-text">使用一键安装脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载Windows客户端"><span class="nav-number">4.2.</span> <span class="nav-text">下载Windows客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭配浏览器插件使用"><span class="nav-number">4.3.</span> <span class="nav-text">搭配浏览器插件使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#电脑上其他软件如何使用Trojan"><span class="nav-number">5.</span> <span class="nav-text">电脑上其他软件如何使用Trojan</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见问题总结"><span class="nav-number">6.</span> <span class="nav-text">常见问题总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#感谢"><span class="nav-number">1.</span> <span class="nav-text">感谢</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统要求以及脚本介绍"><span class="nav-number">2.</span> <span class="nav-text">系统要求以及脚本介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BBRPlus安装"><span class="nav-number">3.</span> <span class="nav-text">BBRPlus安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BBR一键安装代码"><span class="nav-number">3.1.</span> <span class="nav-text">BBR一键安装代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Trojan安装"><span class="nav-number">4.</span> <span class="nav-text">Trojan安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用一键安装脚本"><span class="nav-number">4.1.</span> <span class="nav-text">使用一键安装脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载Windows客户端"><span class="nav-number">4.2.</span> <span class="nav-text">下载Windows客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载Android客户端"><span class="nav-number">4.3.</span> <span class="nav-text">下载Android客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭配浏览器插件使用"><span class="nav-number">4.4.</span> <span class="nav-text">搭配浏览器插件使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#电脑上其他软件如何使用Trojan"><span class="nav-number">5.</span> <span class="nav-text">电脑上其他软件如何使用Trojan</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见问题总结"><span class="nav-number">6.</span> <span class="nav-text">常见问题总结</span></a></li></ol></div>
             
 
           </div>

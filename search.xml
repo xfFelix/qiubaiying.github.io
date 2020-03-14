@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>v2rayN的安装使用</title>
+    <url>/2020/03/14/v2rayN/</url>
+    <content><![CDATA[<blockquote>
+<p>由于 V2Ray 没有自带 GUI 配置界面，所以说客户端使用还是有一点不方便。而V2RayN 则是 windows下 平台一个对新手比较友好的 V2Ray GUI 客户端。</p>
+</blockquote>
+<h2 id="下载v2ray-core-链接"><a href="#下载v2ray-core-链接" class="headerlink" title="下载v2ray-core 链接"></a>下载v2ray-core <strong><sup><a href="https://github.com/v2ray/v2ray-core/releases" target="_blank" rel="noopener">链接</a></strong></h2><p>下载<code>v2ray-windows-64.zip</code>(系统是32位的就下载v2ray-windows-32.zip)</p>
+<p><img src="1.PNG" alt=""></p>
+<p>解压到<code>v2ray</code>文件夹下(自己创建的的文件夹：例如D:\v2ray):</p>
+<h2 id="下载-v2RayN-链接"><a href="#下载-v2RayN-链接" class="headerlink" title="下载 v2RayN 链接"></a>下载 v2RayN <strong><sup><a href="https://github.com/2dust/v2rayN/releases" target="_blank" rel="noopener">链接</a></strong></h2><p>下载<code>v2rayN.zip</code>,解压后有<code>v2rayN.exe</code>和<code>zh-Hans</code>2个目录</p>
+<p><img src="2.PNG" alt=""></p>
+<p>v2rayN.exe: v2rayN运行器</p>
+<p>zh-Hans: 汉化版本</p>
+<p>全部copy到<code>v2ray</code>(上面创建的目录)文件夹下，启动<code>v2rayN.exe</code>,得到</p>
+<p><img src="3.PNG" alt=""></p>
+<h2 id="启动v2rayN"><a href="#启动v2rayN" class="headerlink" title="启动v2rayN"></a>启动v2rayN</h2><p>程序运行到这已经全部安装完毕，接下来就是启动<code>v2rayN</code>了</p>
+<p>右下角会有一个<code>V</code>标志,这个就是<code>v2rayN</code></p>
+<p><img src="4.PNG" alt=""></p>
+<h3 id="启动socks5代理"><a href="#启动socks5代理" class="headerlink" title="启动socks5代理"></a>启动socks5代理</h3><p>例如trojan…，都是socks5代理模式，这里就以trojan为例</p>
+<p><img src="5.PNG" alt=""></p>
+<p>选择服务器-&gt;添加[socks]服务器-&gt;</p>
+<p><img src="6.PNG" alt=""></p>
+<p>服务器: 127.0.0.1</p>
+<p>端口: 1080(默认1080，config.json文件下有具体信息)</p>
+<p>别名(remarks): 000000 (随便写)</p>
+<p><img src="7.png" alt=""></p>
+<p>确定，地下的控制台显示success表示已经成功了，大功告成，打开<a href="https://www.youtube.com/" target="_blank" rel="noopener">youtube</a>, <a href="https://www.google.com/" target="_blank" rel="noopener">google</a>试试看。</p>
+<blockquote>
+<p>注意： 记住打开trojan-cli</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>VPS</category>
+      </categories>
+      <tags>
+        <tag>科学上网</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo-theme-git</title>
     <url>/2020/03/13/hexo-theme-git/</url>
     <content><![CDATA[<h2 id="修复NexT无法上传git的问题"><a href="#修复NexT无法上传git的问题" class="headerlink" title="修复NexT无法上传git的问题"></a>修复NexT无法上传git的问题</h2><p>用 hexo 来部署博客，只是把生成的静态网页给发布上去。但完整的备份是需要备份博客源码的，很多人会新建一个项目来放置博客源码。这样每次写好文章更新博客后，再把源码更新到远程仓库，例如 github 就行。完美备份。</p>
@@ -23,6 +61,7 @@
 ]]></content>
       <categories>
         <category>Markdown</category>
+        <category>hexo</category>
       </categories>
       <tags>
         <tag>git</tag>
@@ -54,6 +93,9 @@
 
 <h3 id="下载Windows客户端"><a href="#下载Windows客户端" class="headerlink" title="下载Windows客户端"></a>下载Windows客户端</h3><p>安装完成后，会展示一条下载地址，复制地址，并下载下来即可</p>
 <p>如果你真的忘记下载了，那么进入/usr/share/nginx/html/目录下，找到一个乱码文件夹，进入会看到客户端文件，使用sftp下载下来即可</p>
+<h3 id="下载Android客户端"><a href="#下载Android客户端" class="headerlink" title="下载Android客户端"></a>下载Android客户端</h3><p>选择app-release.apk</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="attribute">http://bit.ly/382uDNJ</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="搭配浏览器插件使用"><a href="#搭配浏览器插件使用" class="headerlink" title="搭配浏览器插件使用"></a>搭配浏览器插件使用</h3><p>解压缩下载的<code>trojan-cli.zip</code>的压缩包，进入文件夹，双击<code>start.bat</code>，开启Trojan服务，Trojan会监听本地1080端口。然后下载<code>SwitchyOmega</code></p>
 <p>下载插件：<strong>SwitchyOmega</strong></p>
 <p>首先配置<strong>proxy</strong>：</p>
@@ -64,8 +106,10 @@
 <p>规则1：<code>https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt</code></p>
 <p>规则2：<code>https://raw.githubusercontent.com/atrandys/proV/master/fgfwlist.txt</code></p>
 <h2 id="电脑上其他软件如何使用Trojan"><a href="#电脑上其他软件如何使用Trojan" class="headerlink" title="电脑上其他软件如何使用Trojan"></a>电脑上其他软件如何使用Trojan</h2><ol>
-<li>如果软件支持配置socks5，直接指向127.0.0.1：1080即可<br></li>
-<li>如果软件不支持配置socks5，可选择sstap/sockscap64/supercap等软件，曲线实现代理</li>
+<li><p>如果软件支持配置socks5，直接指向127.0.0.1：1080即可</p>
+</li>
+<li><p>如果软件不支持配置socks5，可选择<a href="/2020/03/14/v2rayN/" title="v2rayN">v2rayN</a>/sstap/sockscap64/supercap等软件，曲线实现代理</p>
+</li>
 </ol>
 <h2 id="常见问题总结"><a href="#常见问题总结" class="headerlink" title="常见问题总结"></a>常见问题总结</h2><p>Trojan客户端打开无法运行，提示缺少找不到vcruntime140.dll或找不到msvcp140.dll</p>
 <blockquote>
@@ -335,6 +379,7 @@
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 ]]></content>
       <categories>
+        <category>Markdown</category>
         <category>hexo</category>
       </categories>
       <tags>
