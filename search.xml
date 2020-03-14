@@ -1,33 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Cmder下启动v2ray命令</title>
+    <url>/2020/03/14/bash-v2rayN/</url>
+    <content><![CDATA[<h2 id="Cmder简介"><a href="#Cmder简介" class="headerlink" title="Cmder简介"></a>Cmder简介</h2><h2 id="Cmder进阶"><a href="#Cmder进阶" class="headerlink" title="Cmder进阶"></a>Cmder进阶</h2><h2 id="Cmder设置v2rayN命令"><a href="#Cmder设置v2rayN命令" class="headerlink" title="Cmder设置v2rayN命令"></a>Cmder设置v2rayN命令</h2><p>cmder在<code>bash</code>命令模式下，可以在</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmder/config/profie.d/</span><br></pre></td></tr></table></figure>
+
+<p>文件目录下创建<code>xxx.sh</code>文件,例如：start.sh</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim start.sh</span><br><span class="line"><span class="built_in">alias</span> startv2rayN=<span class="string">'cd /目录/ &amp;&amp; start ./v2rayN.exe &amp;'</span></span><br></pre></td></tr></table></figure>
+
+<img src="/2020/03/14/bash-v2rayN/1.png" class="" title="编辑start.sh">
+
+<p>保存退出之后，重启cmder。就会发现命令已经生效了，试试启动这个命令，成功打开v2ray.exe.</p>
+]]></content>
+      <categories>
+        <category>Bash</category>
+      </categories>
+      <tags>
+        <tag>VPS</tag>
+        <tag>bash</tag>
+        <tag>cmder</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>v2rayN的安装使用</title>
     <url>/2020/03/14/v2rayN/</url>
     <content><![CDATA[<blockquote>
 <p>由于 V2Ray 没有自带 GUI 配置界面，所以说客户端使用还是有一点不方便。而V2RayN 则是 windows下 平台一个对新手比较友好的 V2Ray GUI 客户端。</p>
 </blockquote>
 <h2 id="下载v2ray-core-链接"><a href="#下载v2ray-core-链接" class="headerlink" title="下载v2ray-core 链接"></a>下载v2ray-core <strong><sup><a href="https://github.com/v2ray/v2ray-core/releases" target="_blank" rel="noopener">链接</a></strong></h2><p>下载<code>v2ray-windows-64.zip</code>(系统是32位的就下载v2ray-windows-32.zip)</p>
-<p><img src="1.PNG" alt=""></p>
-<p>解压到<code>v2ray</code>文件夹下(自己创建的的文件夹：例如D:\v2ray):</p>
-<h2 id="下载-v2RayN-链接"><a href="#下载-v2RayN-链接" class="headerlink" title="下载 v2RayN 链接"></a>下载 v2RayN <strong><sup><a href="https://github.com/2dust/v2rayN/releases" target="_blank" rel="noopener">链接</a></strong></h2><p>下载<code>v2rayN.zip</code>,解压后有<code>v2rayN.exe</code>和<code>zh-Hans</code>2个目录</p>
-<p><img src="2.PNG" alt=""></p>
+<img src="/2020/03/14/v2rayN/1.PNG" class="" title="下载v2ray-windows-64.zip% } 解压到&#96;v2ray&#96;文件夹下(自己创建的的文件夹：例如D:\v2ray): ## 下载 v2RayN **&lt;sup&gt;[链接](https:&#x2F;&#x2F;github.com&#x2F;2dust&#x2F;v2rayN&#x2F;releases)** 下载&#96;v2rayN.zip&#96;,解压后有&#96;v2rayN.exe&#96;和&#96;zh-Hans&#96;2个目录 {% asset_img 2.PNG v2ray目录">
+
 <p>v2rayN.exe: v2rayN运行器</p>
 <p>zh-Hans: 汉化版本</p>
 <p>全部copy到<code>v2ray</code>(上面创建的目录)文件夹下，启动<code>v2rayN.exe</code>,得到</p>
-<p><img src="3.PNG" alt=""></p>
+<img src="/2020/03/14/v2rayN/3.PNG" class="" title="启动v2rayN.exe">
+
 <h2 id="启动v2rayN"><a href="#启动v2rayN" class="headerlink" title="启动v2rayN"></a>启动v2rayN</h2><p>程序运行到这已经全部安装完毕，接下来就是启动<code>v2rayN</code>了</p>
 <p>右下角会有一个<code>V</code>标志,这个就是<code>v2rayN</code></p>
-<p><img src="4.PNG" alt=""></p>
+<img src="/2020/03/14/v2rayN/4.PNG" class="" title="启动v2rayN.exe2">
+
 <h3 id="启动socks5代理"><a href="#启动socks5代理" class="headerlink" title="启动socks5代理"></a>启动socks5代理</h3><p>例如trojan…，都是socks5代理模式，这里就以trojan为例</p>
-<p><img src="5.PNG" alt=""></p>
+<img src="/2020/03/14/v2rayN/5.PNG" class="" title="选择代理">
+
 <p>选择服务器-&gt;添加[socks]服务器-&gt;</p>
-<p><img src="6.PNG" alt=""></p>
+<img src="/2020/03/14/v2rayN/6.PNG" class="" title="添加服务器">
+
 <p>服务器: 127.0.0.1</p>
 <p>端口: 1080(默认1080，config.json文件下有具体信息)</p>
 <p>别名(remarks): 000000 (随便写)</p>
-<p><img src="7.png" alt=""></p>
+<img src="/2020/03/14/v2rayN/7.png" class="" title="添加服务器">
+
 <p>确定，地下的控制台显示success表示代理已经成功了，大功告成。</p>
-<p><img src="8.png" alt=""></p>
+
+
 <p>右键打开<code>v2rayN</code>,选择Http代理-&gt; 开启PAC，并自动配置PAC(PAC模式)</p>
 <p>打开<a href="https://www.youtube.com/" target="_blank" rel="noopener">youtube</a>, <a href="https://www.google.com/" target="_blank" rel="noopener">google</a>试试看。</p>
 <blockquote>
