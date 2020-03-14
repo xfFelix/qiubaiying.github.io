@@ -293,6 +293,157 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/14/git-exception/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xfFelix">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jfif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xfFelix的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/14/git-exception/" itemprop="url">git question</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-14T22:34:20+08:00">
+                2020-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="fatal-HttpRequestException-encountered-发送请求时出错"><a href="#fatal-HttpRequestException-encountered-发送请求时出错" class="headerlink" title="fatal: HttpRequestException encountered. 发送请求时出错"></a>fatal: HttpRequestException encountered. 发送请求时出错</h2><img src="/2020/03/14/git-exception/1.png" class="" title="HttpRequestException encountered">
+
+<p>目前俩种解决方式</p>
+<h3 id="下载Git-Credential-Manager-for-Windows最新版"><a href="#下载Git-Credential-Manager-for-Windows最新版" class="headerlink" title="下载Git-Credential-Manager-for-Windows最新版"></a>下载Git-Credential-Manager-for-Windows最新版</h3><p>Github 禁用了TLS v1.0 and v1.1，必须更新Windows的git凭证管理器。</p>
+<p>更新管理器的方式有俩种</p>
+<ol>
+<li><a href="https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases" target="_blank" rel="noopener">https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases</a> 直接下载</li>
+<li><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">https://git-scm.com/downloads</a> 更新git客户端</li>
+</ol>
+<h3 id="设置git-config"><a href="#设置git-config" class="headerlink" title="设置git config"></a>设置git config</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.查看git配置信息</span></span><br><span class="line">$ git config --list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.查看git用户名、密码、邮箱的配置</span></span><br><span class="line">$ git config user.name</span><br><span class="line">$ git config user.password</span><br><span class="line">$ git config user.email</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.设置git用户名、密码、邮箱的配置</span></span><br><span class="line">$ git config user.name <span class="string">"freedom"</span></span><br><span class="line">$ git config user.password <span class="string">"123456"</span></span><br><span class="line">$ git config user.email <span class="string">"1548429568@qq.com"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.设置git用户名、密码、邮箱的配置（全局配置）</span></span><br><span class="line">$ git config --global user.name 用户命</span><br><span class="line">$ git config --global user.name freedom</span><br><span class="line">$ git config --global user.password 密码</span><br><span class="line">$ git config --global user.password abc0506abc</span><br><span class="line">$ git config --global user.email 邮箱</span><br><span class="line">$ git config --global user.email <span class="string">"1548429568@qq.com</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/14/bash-v2rayN/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1281,7 +1432,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1292,7 +1443,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
