@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Dart入门官网： https:&#x2F;&#x2F;dart.dev&#x2F;guides&#x2F;language&#x2F;sound-dart tutorialspoint: https:&#x2F;&#x2F;www.tutorialspoint.com&#x2F;dart_programming&#x2F;dart_programming_operators.htm 程序入口Dart中，每个app都必须要有一个顶级的main()函数作为应用程序的入口。 123main">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dart">
+<meta property="og:url" content="http://yoursite.com/2020/03/20/dart/index.html">
+<meta property="og:site_name" content="xfFelix的博客">
+<meta property="og:description" content="Dart入门官网： https:&#x2F;&#x2F;dart.dev&#x2F;guides&#x2F;language&#x2F;sound-dart tutorialspoint: https:&#x2F;&#x2F;www.tutorialspoint.com&#x2F;dart_programming&#x2F;dart_programming_operators.htm 程序入口Dart中，每个app都必须要有一个顶级的main()函数作为应用程序的入口。 123main">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-20T02:23:17.000Z">
+<meta property="article:modified_time" content="2020-03-20T14:48:39.057Z">
+<meta property="article:author" content="xfFelix">
+<meta property="article:tag" content="dart">
+<meta property="article:tag" content="flutter">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/03/20/dart/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>dart | xfFelix的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="xfFelix的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">xfFelix的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">程序员的博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/20/dart/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xfFelix">
+      <meta itemprop="description" content="一直坚持永远比三分钟热度要重要得多，就算每天努力一点点也比一开始努力后来熄火要好，成功总是积少成多，厚积薄发">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xfFelix的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          dart
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-20 10:23:17 / 修改时间：22:48:39" itemprop="dateCreated datePublished" datetime="2020-03-20T10:23:17+08:00">2020-03-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Dart/" itemprop="url" rel="index"><span itemprop="name">Dart</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Dart入门"><a href="#Dart入门" class="headerlink" title="Dart入门"></a>Dart入门</h2><p>官网： <a href="https://dart.dev/guides/language/sound-dart" target="_blank" rel="noopener">https://dart.dev/guides/language/sound-dart</a></p>
+<p>tutorialspoint: <a href="https://www.tutorialspoint.com/dart_programming/dart_programming_operators.htm" target="_blank" rel="noopener">https://www.tutorialspoint.com/dart_programming/dart_programming_operators.htm</a></p>
+<h3 id="程序入口"><a href="#程序入口" class="headerlink" title="程序入口"></a>程序入口</h3><p>Dart中，每个app都必须要有一个顶级的<span style="background: #eee;
+    border-radius: 3px;
+    color: red;
+    padding: 2px 4px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;">main()</span>函数作为应用程序的入口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">main()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>练一练 <a href="https://dartpad.dev/" target="_blank" rel="noopener">DartPad</a></p>
+<blockquote>
+<p><a href="https://dartpad.dev/" target="_blank" rel="noopener">DartPad</a>是Dart的线上的playground,提供Dart线上的playground还有：<a href="https://www.tutorialspoint.com/execute_dart_online.php" target="_blank" rel="noopener">Online Dart Compiler</a></p>
+</blockquote>
+<h3 id="控制台输出"><a href="#控制台输出" class="headerlink" title="控制台输出"></a>控制台输出</h3><p>要在dart中打印到控制台，可使用print：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(<span class="string">"hello world"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">'hello world'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>练一练 <a href="https://dartpad.dev/" target="_blank" rel="noopener">DartPad</a></p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>Dart是类型安全的 - 它使用静态类型检查和运行时的组合，检查以确保变量的值始终与变量的静态值匹配类型，尽管类型是必须的，但某些类型注释是可选的，因为Dart会执行类型推断。</p>
+<h3 id="创建和分配变量"><a href="#创建和分配变量" class="headerlink" title="创建和分配变量"></a>创建和分配变量</h3><p>在JavaScript中，无法定义变量的类型。</p>
+<p>在Dart中，变脸必须是明确的类型或系统能够解析的类型。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JavaScript</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">"JavaScript"</span>;</span><br><span class="line"><span class="comment">// Dart 以下俩种方式都可以</span></span><br><span class="line">String name = <span class="string">'dart'</span>;</span><br><span class="line"><span class="keyword">var</span> otherName = <span class="string">'Dart'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>更多信息可以查阅官网 <a href="https://dart.dev/guides/language/sound-dart" target="_blank" rel="noopener">Dart官网</a></p>
+<h3 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h3><p>在Javascript中，未初始化的变量是<code>undefined</code></p>
+<p>在Dart中，未初始化的变量的初始值为<code>null</code></p>
+<blockquote>
+<p>注意：数字在Dart中也被当做是对象，所以只要是带有数字类型的未初始化变量的值都是<code>null</code></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JavaScript</span></span><br><span class="line"><span class="keyword">var</span> name; <span class="comment">// == undefined</span></span><br><span class="line"><span class="comment">// Dart</span></span><br><span class="line"><span class="keyword">var</span> name; <span class="comment">// == null</span></span><br><span class="line"><span class="keyword">int</span> x; <span class="comment">// == null</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="检查Null或者0"><a href="#检查Null或者0" class="headerlink" title="检查Null或者0"></a>检查Null或者0</h3><p>在JavaScript中，null、undefined、0、false、’’都是false，其余都为true</p>
+<blockquote>
+<p>注意： 空数组（[]）,和空对象（{}）也是为true</p>
+</blockquote>
+<p>在Dart中，只有布尔值<code>&quot;true&quot;</code>被视为<code>true</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myNull;</span><br><span class="line"><span class="keyword">if</span> (myNull == <span class="literal">null</span>) &#123;</span><br><span class="line">  print(<span class="string">'use " == null" to check null'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> zero = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span> (zero == <span class="number">0</span>) &#123;</span><br><span class="line">  print(<span class="string">'use " == 0" to check zero'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="null的最佳检查"><a href="#null的最佳检查" class="headerlink" title="null的最佳检查"></a>null的最佳检查</h3><p>从Dart 1.12开始， <code>null-aware</code>运算符可以帮助我们做null检查</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">bool <span class="title">isConnected</span><span class="params">(a, b)</span> </span>&#123;</span><br><span class="line">  bool outConn = outgoing[a]?.contains(b) ?? <span class="keyword">false</span>;</span><br><span class="line">  bool outConn = outgoing[a]?.contains(b) ?? <span class="keyword">false</span>;</span><br><span class="line">  <span class="keyword">return</span> outConn || inConn;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>?.</code>运算符在左边为null的情况下会阻断右边的调用， <code>??</code>运算符主要作用是在左侧表达式为null时为其设置默认值。</p>
+<p>对于表达式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">outgoing[a]?.contains(b)</span><br></pre></td></tr></table></figure>
+
+<p>如果outgoing为null或outgoing[a]为null或者contains(b)的值为null，都会使表达式为null。</p>
+<h3 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JavaScript</span></span><br><span class="line"><span class="function">function <span class="title">fn</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Dart</span></span><br><span class="line">fn() &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 也可以写作</span></span><br><span class="line"><span class="function">bool <span class="title">fn</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="异步编程"><a href="#异步编程" class="headerlink" title="异步编程"></a>异步编程</h2><h3 id="Futures"><a href="#Futures" class="headerlink" title="Futures"></a>Futures</h3><p>与JavaScript一样，Dart支持单线程执行。在JavaScript中。<code>Promise</code>对象表示异步操作的最终完成（或失败）及其结果值，Dart使用<code>Future</code>来表示一部操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JavaScript</span></span><br><span class="line">_getIPAddress = () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> url = <span class="string">"https://httpbin.org/ip"</span>;</span><br><span class="line">  <span class="keyword">return</span> fetch(url)</span><br><span class="line">          .then(response =&gt; response.json())</span><br><span class="line">          .then(responseJson =&gt; &#123;</span><br><span class="line">            console.log(responseJson.origin);</span><br><span class="line">          &#125;)</span><br><span class="line">          .<span class="keyword">catch</span>(e =&gt; &#123;</span><br><span class="line">            console.error(e)</span><br><span class="line">          &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Dart</span></span><br><span class="line">_getIPAddress () &#123;</span><br><span class="line">  <span class="keyword">final</span> url = <span class="string">'https://httpbin.org/ip'</span>;</span><br><span class="line">  HttpRequest.request(url).then((value) &#123;</span><br><span class="line">    print(json.decode(value.responseText)[<span class="string">'origin'</span>]);</span><br><span class="line">  &#125;).carchError((error) =&gt; print(error));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Async与Await"><a href="#Async与Await" class="headerlink" title="Async与Await"></a>Async与Await</h3><p><code>async</code>函数声明定义了一个异步函数</p>
+<p>在Dart中，<code>async</code>函数返回一个<code>Future</code>，函数的主体是稍后执行。<code>await</code>运算符用于等待<code>Future</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">_getIPAddress () &#123;</span><br><span class="line">  final url = <span class="string">'https://httpbin.org/ip'</span>;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> request = <span class="keyword">await</span> HttpRequest.request(url);</span><br><span class="line">    <span class="built_in">String</span> ip = json.decode(request.responseText)[<span class="string">'origin'</span>];</span><br><span class="line">    print(ip);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    print(e);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/dart/" rel="tag"># dart</a>
+              <a href="/tags/flutter/" rel="tag"># flutter</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/19/flutter-android-asr/" rel="prev" title="flutter引入百度AI智能语音(Android)">
+      <i class="fa fa-chevron-left"></i> flutter引入百度AI智能语音(Android)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/20/flutter/" rel="next" title="flutter Get Start">
+      flutter Get Start <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dart入门"><span class="nav-number">1.</span> <span class="nav-text">Dart入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#程序入口"><span class="nav-number">1.1.</span> <span class="nav-text">程序入口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制台输出"><span class="nav-number">1.2.</span> <span class="nav-text">控制台输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">1.3.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建和分配变量"><span class="nav-number">1.4.</span> <span class="nav-text">创建和分配变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认值"><span class="nav-number">1.5.</span> <span class="nav-text">默认值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查Null或者0"><span class="nav-number">1.6.</span> <span class="nav-text">检查Null或者0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null的最佳检查"><span class="nav-number">1.7.</span> <span class="nav-text">null的最佳检查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function"><span class="nav-number">1.8.</span> <span class="nav-text">Function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步编程"><span class="nav-number">2.</span> <span class="nav-text">异步编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Futures"><span class="nav-number">2.1.</span> <span class="nav-text">Futures</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Async与Await"><span class="nav-number">2.2.</span> <span class="nav-text">Async与Await</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xfFelix"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">xfFelix</p>
+  <div class="site-description" itemprop="description">一直坚持永远比三分钟热度要重要得多，就算每天努力一点点也比一开始努力后来熄火要好，成功总是积少成多，厚积薄发</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xfFelix</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

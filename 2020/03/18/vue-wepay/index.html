@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="链接公众号官网链接： https:&#x2F;&#x2F;developers.weixin.qq.com&#x2F;doc&#x2F;offiaccount&#x2F;OA_Web_Apps&#x2F;Wechat_webpage_authorization.html 微信支付官网链接： https:&#x2F;&#x2F;pay.weixin.qq.com&#x2F;wiki&#x2F;doc&#x2F;api&#x2F;index.html 使用1.网页授权123456789&#x2F;&#x2F; 参考链接(请在微信客户端中打">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信支付(Vue)">
+<meta property="og:url" content="http://yoursite.com/2020/03/18/vue-wepay/index.html">
+<meta property="og:site_name" content="xfFelix的博客">
+<meta property="og:description" content="链接公众号官网链接： https:&#x2F;&#x2F;developers.weixin.qq.com&#x2F;doc&#x2F;offiaccount&#x2F;OA_Web_Apps&#x2F;Wechat_webpage_authorization.html 微信支付官网链接： https:&#x2F;&#x2F;pay.weixin.qq.com&#x2F;wiki&#x2F;doc&#x2F;api&#x2F;index.html 使用1.网页授权123456789&#x2F;&#x2F; 参考链接(请在微信客户端中打">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-18T03:53:20.000Z">
+<meta property="article:modified_time" content="2020-03-18T15:09:04.344Z">
+<meta property="article:author" content="xfFelix">
+<meta property="article:tag" content="vue">
+<meta property="article:tag" content="微信公众号">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/03/18/vue-wepay/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>微信支付(Vue) | xfFelix的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="xfFelix的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">xfFelix的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">程序员的博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/vue-wepay/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xfFelix">
+      <meta itemprop="description" content="一直坚持永远比三分钟热度要重要得多，就算每天努力一点点也比一开始努力后来熄火要好，成功总是积少成多，厚积薄发">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xfFelix的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          微信支付(Vue)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-18 11:53:20 / 修改时间：23:09:04" itemprop="dateCreated datePublished" datetime="2020-03-18T11:53:20+08:00">2020-03-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>公众号官网链接： <a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html</a></p>
+<p>微信支付官网链接： <a href="https://pay.weixin.qq.com/wiki/doc/api/index.html" target="_blank" rel="noopener">https://pay.weixin.qq.com/wiki/doc/api/index.html</a></p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="1-网页授权"><a href="#1-网页授权" class="headerlink" title="1.网页授权"></a>1.网页授权</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 参考链接(请在微信客户端中打开此链接体验):</span><br><span class="line"></span><br><span class="line">// scope为snsapi_base</span><br><span class="line"></span><br><span class="line">https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx520c15f417810387&amp;redirect_uri=https%3A%2F%2Fchong.qq.com%2Fphp%2Findex.php%3Fd%3D%26c%3DwxAdapter%26m%3DmobileDeal%26showwxpaytitle%3D1%26vb2ctag%3D4_2030_5_1194_60&amp;response_type=code&amp;scope=snsapi_base&amp;state=123#wechat_redirect</span><br><span class="line"></span><br><span class="line">// scope为snsapi_userinfo</span><br><span class="line"></span><br><span class="line">https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf0e81c3bee622d60&amp;redirect_uri=http%3A%2F%2Fnba.bluewebgame.com%2Foauth_response.php&amp;response_type=code&amp;scope=snsapi_userinfo&amp;state=STATE#wechat_redirect</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>尤其注意：跳转回调redirect_uri，应当使用https链接来确保授权code的安全性。不可以使用<code>localhost</code>, <code>127.0.0.1</code>, <code>0.0.0.0</code></p>
+</blockquote>
+<p>用户同意授权后</p>
+<p>如果用户同意授权，页面将跳转至 redirect_uri/?code=CODE&amp;state=STATE。</p>
+<blockquote>
+<p>code说明 ： code作为换取access_token的票据，每次用户授权带上的code将不一样，code只能使用一次，5分钟未被使用自动过期。</p>
+</blockquote>
+<p>例： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">created() &#123;</span><br><span class="line">  <span class="keyword">this</span>.getAuthorize()</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">  <span class="comment">// 获取location.href上的code</span></span><br><span class="line">  getCode() &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; code &#125; = getArgs()</span><br><span class="line">    <span class="built_in">console</span>.log(code)</span><br><span class="line">    <span class="keyword">if</span> (code) &#123;</span><br><span class="line">      <span class="keyword">this</span>.code = code</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  getAuthorize () &#123;</span><br><span class="line">    <span class="comment">// 判断PC环境</span></span><br><span class="line">    <span class="keyword">if</span> (isPC()) <span class="keyword">return</span></span><br><span class="line">    <span class="comment">// 判断是否微信环境</span></span><br><span class="line">    <span class="keyword">if</span> (!isWeixin()) <span class="keyword">return</span></span><br><span class="line">    <span class="comment">// 判断是否已经获取code</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.getCode()) &#123;</span><br><span class="line">      <span class="comment">// 链接必须urlEncode</span></span><br><span class="line">      <span class="built_in">window</span>.location.href = <span class="string">`https://open.weixin.qq.com/connect/oauth2/authorize?appid=<span class="subst">$&#123;APP_ID&#125;</span>&amp;redirect_uri=<span class="subst">$&#123;<span class="built_in">encodeURIComponent</span>(REDIRECT_URI)&#125;</span>&amp;response_type=code&amp;scope=snsapi_base&amp;state=123#wechat_redirect`</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 触发微信支付按钮</span></span><br><span class="line">  wxScope() &#123;</span><br><span class="line">    <span class="keyword">if</span> (isPC()) <span class="keyword">return</span> <span class="keyword">this</span>.Toast(<span class="string">'PC端暂不支持微信支付'</span>)</span><br><span class="line">    <span class="keyword">if</span> (isWeixin()) &#123;</span><br><span class="line">      <span class="comment">// 使用JsApi支付</span></span><br><span class="line">      <span class="keyword">this</span>.payByJsApi()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 使用H5支付</span></span><br><span class="line">      <span class="keyword">this</span>.payByH5()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-使用code获取签名等参数"><a href="#2-使用code获取签名等参数" class="headerlink" title="2.使用code获取签名等参数"></a>2.使用code获取签名等参数</h3><p>微信支付有俩种方式：</p>
+<p><strong>一. WeixinJSBridge</strong></p>
+<p>采用在微信环境调用<code>WeixinJSBridge</code>变量的方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onBridgeReady</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   WeixinJSBridge.invoke(</span><br><span class="line">      <span class="string">'getBrandWCPayRequest'</span>, &#123;</span><br><span class="line">         <span class="string">"appId"</span>:<span class="string">"wx2421b1c4370ec43b"</span>,     <span class="comment">//公众号名称，由商户传入     </span></span><br><span class="line">         <span class="string">"timeStamp"</span>:<span class="string">"1395712654"</span>,         <span class="comment">//时间戳，自1970年以来的秒数     </span></span><br><span class="line">         <span class="string">"nonceStr"</span>:<span class="string">"e61463f8efa94090b1f366cccfbbb444"</span>, <span class="comment">//随机串     </span></span><br><span class="line">         <span class="string">"package"</span>:<span class="string">"prepay_id=u802345jgfjsdfgsdg888"</span>,     </span><br><span class="line">         <span class="string">"signType"</span>:<span class="string">"MD5"</span>,         <span class="comment">//微信签名方式：     </span></span><br><span class="line">         <span class="string">"paySign"</span>:<span class="string">"70EA570631E4BB79628FBCA90534C63FF7FADD89"</span> <span class="comment">//微信签名 </span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(res.err_msg == <span class="string">"get_brand_wcpay_request:ok"</span> )&#123;</span><br><span class="line">      <span class="comment">// 使用以上方式判断前端返回,微信团队郑重提示：</span></span><br><span class="line">            <span class="comment">//res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。</span></span><br><span class="line">      &#125; </span><br><span class="line">   &#125;); </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> WeixinJSBridge == <span class="string">"undefined"</span>)&#123;</span><br><span class="line">   <span class="keyword">if</span>( <span class="built_in">document</span>.addEventListener )&#123;</span><br><span class="line">       <span class="built_in">document</span>.addEventListener(<span class="string">'WeixinJSBridgeReady'</span>, onBridgeReady, <span class="literal">false</span>);</span><br><span class="line">   &#125;<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">document</span>.attachEvent)&#123;</span><br><span class="line">       <span class="built_in">document</span>.attachEvent(<span class="string">'WeixinJSBridgeReady'</span>, onBridgeReady); </span><br><span class="line">       <span class="built_in">document</span>.attachEvent(<span class="string">'onWeixinJSBridgeReady'</span>, onBridgeReady);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">   onBridgeReady();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注：这种方法有时会产生<code>WeixinJSBridge is not defined</code>的错误，因为在其他非微信环境是找不到<code>WeixinJSBridge</code>这个变量的</p>
+</blockquote>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">payByBridge() &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> WeixinJSBridge == <span class="string">"undefined"</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>( <span class="built_in">document</span>.addEventListener )&#123;</span><br><span class="line">        <span class="built_in">document</span>.addEventListener(<span class="string">'WeixinJSBridgeReady'</span>, <span class="keyword">this</span>.onBridgeReady, <span class="literal">false</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">document</span>.attachEvent)&#123;</span><br><span class="line">        <span class="built_in">document</span>.attachEvent(<span class="string">'WeixinJSBridgeReady'</span>, <span class="keyword">this</span>.onBridgeReady);</span><br><span class="line">        <span class="built_in">document</span>.attachEvent(<span class="string">'onWeixinJSBridgeReady'</span>, <span class="keyword">this</span>.onBridgeReady);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.onBridgeReady();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">onBridgeReady()&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; appId, timeStamp, nonceStr, signType, paySign &#125; = <span class="keyword">this</span>.wxConfig</span><br><span class="line">  WeixinJSBridge.invoke(</span><br><span class="line">      <span class="string">'getBrandWCPayRequest'</span>, &#123;</span><br><span class="line">        appId,     <span class="comment">//公众号名称，由商户传入</span></span><br><span class="line">        timeStamp,         <span class="comment">//时间戳，自1970年以来的秒数</span></span><br><span class="line">        nonceStr, <span class="comment">//随机串</span></span><br><span class="line">        package: <span class="keyword">this</span>.wxConfig.package,</span><br><span class="line">        signType,         <span class="comment">//微信签名方式：</span></span><br><span class="line">        paySign <span class="comment">//微信签名</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(res.err_msg == <span class="string">"get_brand_wcpay_request:ok"</span> )&#123;</span><br><span class="line">        <span class="comment">// 使用以上方式判断前端返回,微信团队郑重提示：</span></span><br><span class="line">        <span class="comment">//res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。</span></span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p><strong>二. JS-SDK</strong></p>
+<p>步骤一：绑定域名<br>先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。</p>
+<p>备注：登录后可在“开发者中心”查看对应的接口权限。</p>
+<p>步骤二：引入JS文件</p>
+<p>任选以下一种方式：</p>
+<ol>
+<li><p>在需要调用JS接口的页面引入如下JS文件，（支持https）：<a href="http://res.wx.qq.com/open/js/jweixin-1.6.0.js" target="_blank" rel="noopener">http://res.wx.qq.com/open/js/jweixin-1.6.0.js</a></p>
+</li>
+<li><p>如需进一步提升服务稳定性，当上述资源不可访问时，可改访问：<a href="http://res2.wx.qq.com/open/js/jweixin-1.6.0.js" target="_blank" rel="noopener">http://res2.wx.qq.com/open/js/jweixin-1.6.0.js</a> （支持https）。</p>
+</li>
+<li><p>npm i weixin-js-sdk –save<br>import wx from ‘weixin-js-sdk’</p>
+</li>
+</ol>
+<p>备注：支持使用 AMD/CMD 标准模块加载方法加载</p>
+<p>步骤三：通过config接口注入权限验证配置</p>
+<p>所有需要使用JS-SDK的页面必须先注入配置信息，否则将无法调用（同一个url仅需调用一次，对于变化url的SPA的web app可在每次url变化时进行调用,目前Android微信客户端不支持pushState的H5新特性，所以使用pushState来实现web app的页面会导致签名失败，此问题会在Android6.2中修复）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wx.config(&#123;</span><br><span class="line">  debug: <span class="literal">true</span>, <span class="comment">// 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。</span></span><br><span class="line">  appId: <span class="string">''</span>, <span class="comment">// 必填，公众号的唯一标识</span></span><br><span class="line">  timestamp: , <span class="comment">// 必填，生成签名的时间戳</span></span><br><span class="line">  nonceStr: <span class="string">''</span>, <span class="comment">// 必填，生成签名的随机串</span></span><br><span class="line">  signature: <span class="string">''</span>,<span class="comment">// 必填，签名</span></span><br><span class="line">  jsApiList: [] <span class="comment">// 必填，需要使用的JS接口列表</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>步骤四：通过ready接口处理成功验证</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wx.ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>步骤五：通过error接口处理失败验证</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wx.error(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>接口调用说明<br>所有接口通过wx对象(也可使用jWeixin对象)来调用，参数是一个对象，除了每个接口本身需要传的参数之外，还有以下通用参数：</p>
+<ol>
+<li>success：接口调用成功时执行的回调函数。</li>
+<li>fail：接口调用失败时执行的回调函数。</li>
+<li>complete：接口调用完成时执行的回调函数，无论成功或失败都会执行。</li>
+<li>cancel：用户点击取消时的回调函数，仅部分有用户取消操作的api才会用到。</li>
+<li>trigger: 监听Menu中的按钮点击时触发的方法，该方法仅支持Menu中的相关接口。<br>备注：不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回。</li>
+</ol>
+<p>以上几个函数都带有一个参数，类型为对象，其中除了每个接口本身返回的数据之外，还有一个通用属性errMsg，其值格式如下：</p>
+<p>调用成功时：”xxx:ok” ，其中xxx为调用的接口名</p>
+<p>用户取消时：”xxx:cancel”，其中xxx为调用的接口名</p>
+<p>调用失败时：其值为具体错误信息</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> payByJsApi () &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> token = getToken()</span><br><span class="line">    <span class="keyword">this</span>.Indicator.open(&#123;</span><br><span class="line">      spinnerType: <span class="string">'double-bounce'</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// 调用获取签名接口</span></span><br><span class="line">    <span class="keyword">let</span> res = <span class="keyword">await</span> <span class="keyword">this</span>.axios(testUrl + api.saveOrderByCart, &#123;token, <span class="attr">id</span>: <span class="keyword">this</span>.addressDef.id, <span class="attr">payMethod</span>: <span class="number">0</span>, <span class="attr">wxCode</span>: <span class="keyword">this</span>.code&#125;, <span class="string">'post'</span>)</span><br><span class="line">    <span class="keyword">this</span>.Indicator.close()</span><br><span class="line">    <span class="keyword">if</span> (res.error_code) <span class="keyword">return</span> <span class="keyword">this</span>.Toast(res.message)</span><br><span class="line">    <span class="keyword">this</span>.wxConfig = res.data</span><br><span class="line">    <span class="keyword">this</span>.payByWechat()</span><br><span class="line">  &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">    <span class="built_in">console</span>.error(e.message)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">payByWechat() &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; appId, timeStamp, nonceStr, signType, paySign, orderId &#125; = <span class="keyword">this</span>.wxConfig</span><br><span class="line">  <span class="keyword">let</span> _this = <span class="keyword">this</span></span><br><span class="line">  wx.config(&#123;</span><br><span class="line">    debug: <span class="literal">false</span>, <span class="comment">// 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。</span></span><br><span class="line">    appId, <span class="comment">// 必填，公众号的唯一标识</span></span><br><span class="line">    timestamp: timeStamp, <span class="comment">// 必填，生成签名的时间戳</span></span><br><span class="line">    nonceStr, <span class="comment">// 必填，生成签名的随机串</span></span><br><span class="line">    signature: paySign,<span class="comment">// 必填，签名</span></span><br><span class="line">    jsApiList: [<span class="string">'checkJsApi'</span>, <span class="string">'chooseWXPay'</span>] <span class="comment">// 必填，需要使用的JS接口列表</span></span><br><span class="line">  &#125;)</span><br><span class="line">  wx.ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。</span></span><br><span class="line">    wx.checkJsApi(&#123;</span><br><span class="line">      jsApiList: [<span class="string">'chooseWXPay'</span>],</span><br><span class="line">      success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 以键值对的形式返回，可用的api值true，不可用为false</span></span><br><span class="line">        <span class="comment">// 如：&#123;"checkResult":&#123;"chooseImage":true&#125;,"errMsg":"checkJsApi:ok"&#125;</span></span><br><span class="line">        <span class="keyword">if</span> (res.checkResult.chooseWXPay) &#123;</span><br><span class="line">          wx.chooseWXPay(&#123;</span><br><span class="line">            timestamp: timeStamp, <span class="comment">// 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符</span></span><br><span class="line">            nonceStr, <span class="comment">// 支付签名随机串，不长于 32 位</span></span><br><span class="line">            package: _this.wxConfig.package, <span class="comment">// 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=\*\*\*）</span></span><br><span class="line">            signType, <span class="comment">// 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'</span></span><br><span class="line">            paySign, <span class="comment">// 支付签名</span></span><br><span class="line">            success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">              <span class="comment">// 支付成功后的回调函数</span></span><br><span class="line">              <span class="comment">// this.Toast('下单成功')</span></span><br><span class="line">              <span class="comment">// this.$router.push(&#123; name: 'orderDetails', params: &#123; orderId: orderId &#125; &#125;)</span></span><br><span class="line">              _this.showSendCode = <span class="literal">false</span>;</span><br><span class="line">              _this.exchangeShow = <span class="literal">true</span>;</span><br><span class="line">              _this.parOrderId = orderId;</span><br><span class="line">              _this.clearPassword()</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          _this.Toast(<span class="string">'当前客户端版本不支持chooseWXPay接口'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">  wx.error(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。</span></span><br><span class="line">    <span class="built_in">console</span>.log(res)</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vue/" rel="tag"># vue</a>
+              <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag"># 微信公众号</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/18/Swiper/" rel="prev" title="Swiper">
+      <i class="fa fa-chevron-left"></i> Swiper
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/19/flutter-android-asr/" rel="next" title="flutter引入百度AI智能语音(Android)">
+      flutter引入百度AI智能语音(Android) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#链接"><span class="nav-number">1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-网页授权"><span class="nav-number">2.1.</span> <span class="nav-text">1.网页授权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-使用code获取签名等参数"><span class="nav-number">2.2.</span> <span class="nav-text">2.使用code获取签名等参数</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xfFelix"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">xfFelix</p>
+  <div class="site-description" itemprop="description">一直坚持永远比三分钟热度要重要得多，就算每天努力一点点也比一开始努力后来熄火要好，成功总是积少成多，厚积薄发</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xfFelix</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
