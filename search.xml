@@ -1,9 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>JS位运算技巧</title>
+    <url>/2020/06/17/js-bit-operator/</url>
+    <content><![CDATA[<h2 id="按位异或-实现变量交换"><a href="#按位异或-实现变量交换" class="headerlink" title="按位异或(^)实现变量交换"></a>按位异或(^)实现变量交换</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">10</span>, b = <span class="number">20</span></span><br><span class="line"></span><br><span class="line">a ^= b</span><br><span class="line">b ^= a</span><br><span class="line">a ^= b</span><br><span class="line"></span><br><span class="line"><span class="comment">// a = 20 b = 10、</span></span><br><span class="line"></span><br><span class="line">[a, b] = [b, a]; <span class="comment">// ES6，解构赋值</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用左移运算符-lt-lt-迅速得出2的次方"><a href="#使用左移运算符-lt-lt-迅速得出2的次方" class="headerlink" title="使用左移运算符 (&lt;&lt;) 迅速得出2的次方"></a>使用左移运算符 (&lt;&lt;) 迅速得出2的次方</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> &lt;&lt; <span class="number">2</span>  <span class="comment">// 4, 即 2的2次方</span></span><br><span class="line"><span class="number">1</span> &lt;&lt; <span class="number">10</span> <span class="comment">// 1024, 即 2的10次方</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 但是要注意使用场景</span></span><br><span class="line">a = <span class="number">2e9</span>;   <span class="comment">// 2000000000</span></span><br><span class="line">a &lt;&lt; <span class="number">1</span>;    <span class="comment">// -294967296</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-切换变量-0-或-1"><a href="#使用-切换变量-0-或-1" class="headerlink" title="使用 ^ 切换变量 0 或 1"></a>使用 ^ 切换变量 0 或 1</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// --- before ---</span></span><br><span class="line"><span class="comment">// if 判断</span></span><br><span class="line"><span class="keyword">if</span> (toggle) &#123;</span><br><span class="line">    toggle = <span class="number">0</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    toggle = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 三目运算符</span></span><br><span class="line">togle = toggle ? <span class="number">0</span> : <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// --- after ---</span></span><br><span class="line">toggle ^= <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-amp-判断奇偶性"><a href="#使用-amp-判断奇偶性" class="headerlink" title="使用 &amp; 判断奇偶性"></a>使用 &amp; 判断奇偶性</h2><p>偶数 &amp; 1 = 0</p>
+<p>奇数 &amp; 1 = 1</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">7</span> &amp; <span class="number">1</span>);    <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">8</span> &amp; <span class="number">1</span>) ;   <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-将数字转为布尔值"><a href="#使用-将数字转为布尔值" class="headerlink" title="使用 !! 将数字转为布尔值"></a>使用 !! 将数字转为布尔值</h2><p>所有<code>非0</code>的值都是<code>true</code>，包括负数、浮点数：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(!!<span class="number">7</span>);       <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(!!<span class="number">-1</span>);      <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(!!<span class="number">0.71</span>);    <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(!!<span class="literal">undefined</span>) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(!!<span class="literal">null</span>) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(!!<span class="string">''</span>) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(!!<span class="number">0</span>) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(!!<span class="literal">false</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-、-gt-gt-、-lt-lt-、-gt-gt-gt-、-来取整"><a href="#使用-、-gt-gt-、-lt-lt-、-gt-gt-gt-、-来取整" class="headerlink" title="使用~、&gt;&gt;、&lt;&lt;、&gt;&gt;&gt;、|来取整"></a>使用~、&gt;&gt;、&lt;&lt;、&gt;&gt;&gt;、|来取整</h2><p>相当于使用了 Math.floor()</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(~~<span class="number">11.71</span>)     <span class="comment">// 11</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">11.71</span> &gt;&gt; <span class="number">0</span>)  <span class="comment">// 11</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">11.71</span> &lt;&lt; <span class="number">0</span>)  <span class="comment">// 11</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">11.71</span> | <span class="number">0</span>)   <span class="comment">// 11</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">11.71</span> &gt;&gt;&gt; <span class="number">0</span>) <span class="comment">// 11</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意 &gt;&gt;&gt; 不可对负数取整</p>
+</blockquote>
+<p><img src="/2020/06/17/js-bit-operator/1.jpg" alt></p>
+<h2 id="使用-判断符号是否相同"><a href="#使用-判断符号是否相同" class="headerlink" title="使用^判断符号是否相同"></a>使用^判断符号是否相同</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(a ^ b) &gt;= <span class="number">0</span>; <span class="comment">//  true 相同; false 不相同</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/06/17/js-bit-operator/2.jpg" alt></p>
+<h2 id="使用-来检查数字是否不相等"><a href="#使用-来检查数字是否不相等" class="headerlink" title="使用^来检查数字是否不相等"></a>使用^来检查数字是否不相等</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// --- before ---</span></span><br><span class="line"><span class="keyword">if</span> (a !== <span class="number">1171</span>) &#123;...&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// --- after ---</span></span><br><span class="line"><span class="keyword">if</span> (a ^ <span class="number">1171</span>) &#123;...&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/06/17/js-bit-operator/3.jpg" alt></p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(!(~+[])+&#123;&#125;)[--[~+<span class="string">""</span>][+[]]*[~+[]]+~~!+[]]+(&#123;&#125;+[])[[~!+[]]*~+[]]</span><br></pre></td></tr></table></figure>
+
+<p>如果以后有人喷你的代码，你就可以将此代码发给他</p>
+]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>css开发小技巧</title>
     <url>/2020/05/21/css-tips/</url>
-    <content><![CDATA[<h2 id="CSS设置背景图宽度100-，高度自适应"><a href="#CSS设置背景图宽度100-，高度自适应" class="headerlink" title="CSS设置背景图宽度100%，高度自适应"></a>CSS设置背景图宽度100%，高度自适应</h2><p>div的高度随背景图片的高度变化：</p>
+    <content><![CDATA[<h2 id="英文字体g-p-q等字母显示不全"><a href="#英文字体g-p-q等字母显示不全" class="headerlink" title="英文字体g,p,q等字母显示不全"></a>英文字体g,p,q等字母显示不全</h2><p><img src="/2020/05/21/css-tips/1.png" alt></p>
+<p>因为字体没有设置<code>line-height</code>,默认值为1，所以无法显示</p>
+<p>解决：设置<code>line-height: 1.6</code></p>
+<p><img src="/2020/05/21/css-tips/2.png" alt></p>
+<h2 id="用CSS解决前端图片变形问题"><a href="#用CSS解决前端图片变形问题" class="headerlink" title="用CSS解决前端图片变形问题"></a>用CSS解决前端图片变形问题</h2><p>让图片始终显示在容器内，并且居中显示</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">div&#123;</span><br><span class="line">	width: 200px;</span><br><span class="line">	height: 200px;</span><br><span class="line">	border: 2px solid red;</span><br><span class="line">	position: relative;</span><br><span class="line">&#125;</span><br><span class="line">img&#123;</span><br><span class="line">	max-width: 100%;</span><br><span class="line">	max-height: 100%;</span><br><span class="line">	position: absolute;</span><br><span class="line"> top: 50%;</span><br><span class="line"> left: 50%;</span><br><span class="line"> transform: translate(-50%, -50%); </span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"1.png"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"1.jpg"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>效果图如下：</p>
+<p><img src="/2020/05/21/css-tips/3.jpg" alt></p>
+<p>本文来自<a href="https://blog.csdn.net/caidingnu/article/details/92232872" target="_blank" rel="noopener">用CSS解决前端图片变形问题</a>.</p>
+<h2 id="CSS设置背景图宽度100-，高度自适应"><a href="#CSS设置背景图宽度100-，高度自适应" class="headerlink" title="CSS设置背景图宽度100%，高度自适应"></a>CSS设置背景图宽度100%，高度自适应</h2><p>div的高度随背景图片的高度变化：</p>
 <p>原理是通过padding-top或者padding-bottom实现，值是背景图片的<strong>宽高比</strong>。高度设置为0.</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.newcenter</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">'../../assets/img/newcenter.png'</span>) no-repeat;</span><br><span class="line">  <span class="attribute">background-size</span>: <span class="number">100%</span> auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.newcenter</span><span class="selector-pseudo">:before</span>&#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">""</span>; </span><br><span class="line">  <span class="attribute">display</span>: block; </span><br><span class="line">  <span class="attribute">padding-top</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -154,7 +204,7 @@
 <p>考虑到许多应用程序使用诸如 webpack 之类的模块打包器来进行代码的转译和优化，这个特性现在还没什么大作用。</p>
 <h2 id="toString方法判断对象的类型"><a href="#toString方法判断对象的类型" class="headerlink" title="toString方法判断对象的类型"></a>toString方法判断对象的类型</h2><p>toString() 是 Object 的原型方法，调用该方法，默认返回当前对象的 [[Class]] 。这是一个内部属性，其格式为 [object Xxx] ，其中 Xxx 就是对象的类型。</p>
 <p>对于 Object 对象，直接调用 toString()  就能返回 [object Object] 。而对于其他对象，则需要通过 call / apply 来调用才能返回正确的类型信息。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="string">''</span>) ;   <span class="comment">// [object String]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="number">1</span>) ;    <span class="comment">// [object Number]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="literal">true</span>) ; <span class="comment">// [object Boolean]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="built_in">Symbol</span>()); <span class="comment">//[object Symbol]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="literal">undefined</span>) ; <span class="comment">// [object Undefined]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="literal">null</span>) ; <span class="comment">// [object Null]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="keyword">new</span> <span class="built_in">Function</span>()) ; <span class="comment">// [object Function]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="keyword">new</span> <span class="built_in">Date</span>()) ; <span class="comment">// [object Date]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call([]) ; <span class="comment">// [object Array]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="keyword">new</span> <span class="built_in">RegExp</span>()) ; <span class="comment">// [object RegExp]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="keyword">new</span> <span class="built_in">Error</span>()) ; <span class="comment">// [object Error]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="built_in">document</span>) ; <span class="comment">// [object HTMLDocument]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="built_in">window</span>) ; <span class="comment">//[object global] window 是全局对象global 的引用</span></span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="string">''</span>) ;   <span class="comment">// [object String]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="number">1</span>) ;    <span class="comment">// [object Number]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="literal">true</span>) ; <span class="comment">// [object Boolean]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="built_in">Symbol</span>()); <span class="comment">//[object Symbol]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="literal">undefined</span>) ; <span class="comment">// [object Undefined]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="literal">null</span>) ; <span class="comment">// [object Null]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="keyword">new</span> <span class="built_in">Function</span>()) ; <span class="comment">// [object Function]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="keyword">new</span> <span class="built_in">Date</span>()) ; <span class="comment">// [object Date]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call([]) ; <span class="comment">// [object Array]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="keyword">new</span> <span class="built_in">RegExp</span>()) ; <span class="comment">// [object RegExp]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="keyword">new</span> <span class="built_in">Error</span>()) ; <span class="comment">// [object Error]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="built_in">document</span>) ; <span class="comment">// [object HTMLDocument]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="built_in">window</span>) ; <span class="comment">//[object Window] window 是全局对象global 的引用</span></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>js</category>
       </categories>
@@ -184,35 +234,72 @@
     <content><![CDATA[<h2 id="nginx简介"><a href="#nginx简介" class="headerlink" title="nginx简介"></a>nginx简介</h2><p>官网：<a href="https://www.nginx.com/" target="_blank" rel="noopener">https://www.nginx.com/</a></p>
 <p>下载：<a href="http://nginx.org/en/download.html" target="_blank" rel="noopener">http://nginx.org/en/download.html</a></p>
 <h2 id="nginx安装"><a href="#nginx安装" class="headerlink" title="nginx安装"></a>nginx安装</h2><p>第一步：进入下载页面</p>
-<p><img src="1.png" alt=""></p>
+<p><img src="/2020/04/27/nginx/1.png" alt></p>
 <p>第二步：选择系统（centos，Ubuntu）</p>
-<p><img src="2.png" alt=""></p>
+<p><img src="/2020/04/27/nginx/2.png" alt></p>
 <p>第三步：根据提示，进行install</p>
-<p><img src="3.png" alt=""></p>
-<h2 id="nginx使用"><a href="#nginx使用" class="headerlink" title="nginx使用"></a>nginx使用</h2><h3 id="Vue配置history"><a href="#Vue配置history" class="headerlink" title="Vue配置history"></a>Vue配置history</h3><p>一级域名</p>
+<p><img src="/2020/04/27/nginx/3.png" alt></p>
+<h2 id="nginx使用"><a href="#nginx使用" class="headerlink" title="nginx使用"></a>nginx使用</h2><h3 id="location匹配优先级顺序"><a href="#location匹配优先级顺序" class="headerlink" title="location匹配优先级顺序"></a>location匹配优先级顺序</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">=   // 进行普通字符精确匹配，也就是完全匹配 </span><br><span class="line">^~  // 表示普通字符匹配，使用前缀匹配</span><br><span class="line">~   // 正则匹配，区分大小写</span><br><span class="line">~*   // 正则匹配，不区分大小写</span><br></pre></td></tr></table></figure>
+
+<h3 id="try-files的使用"><a href="#try-files的使用" class="headerlink" title="try_files的使用"></a>try_files的使用</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">try_files <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.html;</span><br></pre></td></tr></table></figure>
+
+<p>举例说明：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">location /images/ &#123;</span><br><span class="line">    root /opt/html/;</span><br><span class="line">    try_files <span class="variable">$uri</span> <span class="variable">$uri</span>/ /images/default.gif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>比如 请求 127.0.0.1/images/test.gif 会依次查找 </p>
+<ol>
+<li>文件<code>/opt/html/images/test.gif</code></li>
+<li>文件夹 <code>/opt/html/images/test.gif/</code>下的<code>index</code>文件  </li>
+<li>请求<code>127.0.0.1/images/default.gif</code></li>
+</ol>
+<p>关键点</p>
+<ol>
+<li>按指定的file顺序查找存在的文件，并使用第一个找到的文件进行请求处理</li>
+<li>查找路径是按照给定的root或alias为根路径来查找的</li>
+<li>如果给出的file都没有匹配到，则重新请求最后一个参数给定的uri，就是新的location匹配</li>
+<li>如果最后一个参数是 = 404 ，若给出的file都没有匹配到，则最后返回404的响应码</li>
+</ol>
+<p><strong>Vue配置history</strong></p>
+<p>一级域名</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">  try_files <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>子域名</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">location /ticket &#123;</span><br><span class="line">  proxy_redirect off;</span><br><span class="line">  proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">  proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">  proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">  proxy_set_header Cookie <span class="variable">$http_cookie</span>;</span><br><span class="line">  proxy_pass http://127.0.0.1:9966/ticket/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">location ^~ /ticket &#123;</span><br><span class="line">  try_files <span class="variable">$uri</span> <span class="variable">$uri</span>/ /ticket/index.html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h3 id="rewrite的使用"><a href="#rewrite的使用" class="headerlink" title="rewrite的使用"></a>rewrite的使用</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rewrite regex replacement [flag];</span><br></pre></td></tr></table></figure>
+
+<p>rewrite 的四个 flag</p>
+<p>1.<code>last</code></p>
+<p>停止处理当前的ngx_http_rewrite_module的指令集，并开始搜索与更改后的URI相匹配的location;</p>
+<p>2.<code>break</code></p>
+<p>停止处理当前的ngx_http_rewrite_module指令集，就像上面说的break指令一样;</p>
+<p>3.<code>redirect</code></p>
+<p>返回302临时重定向。(nginx关闭后失效)</p>
+<p>4.<code>permanent</code></p>
+<p>返回301永久重定向。(nginx关闭后依旧有效)</p>
+<h3 id="alias与root的区别"><a href="#alias与root的区别" class="headerlink" title="alias与root的区别"></a>alias与root的区别</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">location /requestpath/images/ &#123;</span><br><span class="line">  root /local_path/image/;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http://www.baidu.com/request_path/images/map.html</span><br><span class="line">/local_path/image/requestpath/images/map.html</span><br><span class="line"></span><br><span class="line">location /requestpath/images/ &#123;</span><br><span class="line">  <span class="built_in">alias</span> /local_path/image/;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http://www.baidu.com/request_path/images/map.html</span><br><span class="line">/local_path/image/map.html</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：<code>root</code>与<code>alias</code>末尾的<code>/</code>别忘了，不写是无法访问的，<code>location</code>属性末尾上的<code>/</code>是可以省略的</p>
+</blockquote>
 <h3 id="gzip配置"><a href="#gzip配置" class="headerlink" title="gzip配置"></a>gzip配置</h3><h4 id="1-服务器配置gzip压缩"><a href="#1-服务器配置gzip压缩" class="headerlink" title="1.服务器配置gzip压缩"></a>1.服务器配置gzip压缩</h4><p>Nginx是前端文件常用的服务器，Nginx服务器的配置文件nginx.conf的http模块：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  <span class="comment"># 开启gzip on为开启，off为关闭</span></span><br><span class="line">  gzip on;</span><br><span class="line">  <span class="comment"># 检查是否存在请求静态文件的gz结尾的文件，如果有则直接返回该gz文件内容，不存在则先压缩再返回</span></span><br><span class="line">  gzip_static on;</span><br><span class="line">  <span class="comment"># 设置允许压缩的页面最小字节数，页面字节数从header头中的Content-Length中进行获取。</span></span><br><span class="line">  <span class="comment"># 默认值是0，不管页面多大都压缩。</span></span><br><span class="line">  <span class="comment"># 建议设置成大于10k的字节数，配合compression-webpack-plugin</span></span><br><span class="line">  gzip_min_length 10k;</span><br><span class="line">  <span class="comment"># 对特定的MIME类型生效,其中'text/html’被系统强制启用</span></span><br><span class="line">  gzip_types text/javascript application/javascript text/css application/json;</span><br><span class="line">  <span class="comment"># Nginx作为反向代理的时候启用，开启或者关闭后端服务器返回的结果</span></span><br><span class="line">  <span class="comment"># 匹配的前提是后端服务器必须要返回包含"Via"的 header头</span></span><br><span class="line">  <span class="comment"># off(关闭所有代理结果的数据的压缩)</span></span><br><span class="line">  <span class="comment"># expired(启用压缩,如果header头中包括"Expires"头信息)</span></span><br><span class="line">  <span class="comment"># no-cache(启用压缩,header头中包含"Cache-Control:no-cache")</span></span><br><span class="line">  <span class="comment"># no-store(启用压缩,header头中包含"Cache-Control:no-store")</span></span><br><span class="line">  <span class="comment"># private(启用压缩,header头中包含"Cache-Control:private")</span></span><br><span class="line">  <span class="comment"># no_last_modefied(启用压缩,header头中不包含"Last-Modified")</span></span><br><span class="line">  <span class="comment"># no_etag(启用压缩,如果header头中不包含"Etag"头信息)</span></span><br><span class="line">  <span class="comment"># auth(启用压缩,如果header头中包含"Authorization"头信息)</span></span><br><span class="line">  <span class="comment"># any - 无条件启用压缩</span></span><br><span class="line">  gzip_proxied any;</span><br><span class="line">  <span class="comment"># 请求加个 vary头，给代理服务器用的，有的浏览器支持压缩，有的不支持，所以避免浪费不支持的也压缩</span></span><br><span class="line">  gzip_vary on;</span><br><span class="line">  <span class="comment"># 同 compression-webpack-plugin 插件一样，gzip压缩比（1~9），</span></span><br><span class="line">  <span class="comment"># 越小压缩效果越差，但是越大处理越慢，一般取中间值</span></span><br><span class="line">  gzip_comp_level 6;</span><br><span class="line">  <span class="comment"># 获取多少内存用于缓存压缩结果，‘16  8k’表示以8k*16 为单位获得。</span></span><br><span class="line">  <span class="comment"># PS: 如果没有.gz文件，是需要Nginx实时压缩的</span></span><br><span class="line">  gzip_buffers 16 8k;</span><br><span class="line">  <span class="comment"># 注：99.99%的浏览器基本上都支持gzip解压了，所以可以不用设这个值,保持系统默认即可。</span></span><br><span class="line">  <span class="comment"># nginx反向代理gzip_http_version只支持http 1.0，配置1.1无效</span></span><br><span class="line">  gzip_http_version 1.0; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="2-检查gzip是否生效"><a href="#2-检查gzip是否生效" class="headerlink" title="2.检查gzip是否生效"></a>2.检查gzip是否生效</h4><p>浏览器文件请求的请求头包含字段<code>Accept-Encoding</code>: <code>gzip</code>代表浏览器支持<code>gzip</code>压缩文件</p>
-<p><img src="4.png" alt=""></p>
+<p><img src="/2020/04/27/nginx/4.png" alt></p>
 <p>文件响应头包含字段<code>Content-Encoding</code>: <code>gzip</code>代表返回的是压缩文件</p>
-<p><img src="5.png" alt=""></p>
+<p><img src="/2020/04/27/nginx/5.png" alt></p>
 <p>同时<code>NetWork</code>一栏还可以查看到文件的实际大小和实际的请求（<code>gzip</code>）文件大小</p>
-<p><img src="6.png" alt=""></p>
+<p><img src="/2020/04/27/nginx/6.png" alt></p>
 <h4 id="3-检查Nginx是否使用了我们提供的gz文件"><a href="#3-检查Nginx是否使用了我们提供的gz文件" class="headerlink" title="3.检查Nginx是否使用了我们提供的gz文件"></a>3.检查<code>Nginx</code>是否使用了我们提供的<code>gz</code>文件</h4><p><code>Nginx</code>自带<code>gzip</code>压缩功能，如果我们没提供，它会实时压缩（例如<code>index.html</code>文件），这就很浪费服务器资源了。现在我们已经提供<code>js</code>和<code>css</code>的<code>gz</code>文件，如何判断<code>Nginx</code>是使用了我们提供的<code>gz</code>文件，而不是自己压缩的呢？</p>
 <p>上面有一个配置项：<code>gzip_static on</code>;，开启之后<code>Nginx</code>会优先使用我们的<code>gz</code>文件，但是还是不能确定，<code>Nginx</code>有没有使用<code>gz</code>文件。</p>
 <p>查看<code>network</code>请求发现，每一个文件都有<code>etag</code>响应头，如果<code>Nginx</code>使用了已有的<code>gz</code>文件，那么这个请求的<code>etag</code>值不带有<code>W/</code>，反之，如果是文件是<code>Nginx</code>压缩的，<code>etag</code>值则会带有<code>W/</code>。</p>
 <p>例如index.html:</p>
-<p><img src="7.png" alt=""></p>
+<p><img src="/2020/04/27/nginx/7.png" alt></p>
 <p>拿chunk-vendors.js做一个实验，这个文件本身是带有gz文件的，请求的etag如下（不带有W/）：</p>
-<p><img src="8.png" alt=""></p>
+<p><img src="/2020/04/27/nginx/8.png" alt></p>
 <p>这时候我们删掉服务器上chunk-vendors.js对应的gz文件，刷新页面，请求如下：</p>
-<p><img src="9.png" alt=""></p>
+<p><img src="/2020/04/27/nginx/9.png" alt></p>
 <p>综上，我们就可以验证，只要我们配置了gzip_static on;，Nginx就会优先使用了我们提供的gz文件。</p>
 ]]></content>
       <categories>
@@ -1106,8 +1193,14 @@
   <entry>
     <title>git question</title>
     <url>/2020/03/14/git-exception/</url>
-    <content><![CDATA[<h2 id="fatal-HttpRequestException-encountered-发送请求时出错"><a href="#fatal-HttpRequestException-encountered-发送请求时出错" class="headerlink" title="fatal: HttpRequestException encountered. 发送请求时出错"></a>fatal: HttpRequestException encountered. 发送请求时出错</h2><img src="/2020/03/14/git-exception/1.png" class="" title="HttpRequestException encountered">
-
+    <content><![CDATA[<h2 id="Git-流程图"><a href="#Git-流程图" class="headerlink" title="Git 流程图"></a>Git 流程图</h2><p><img src="/2020/03/14/git-exception/2.png" alt></p>
+<ul>
+<li>Workspace：工作区</li>
+<li>Index / Stage：暂存区</li>
+<li>Repository：仓库区（或本地仓库）</li>
+<li>Remote：远程仓库</li>
+</ul>
+<h2 id="fatal-HttpRequestException-encountered-发送请求时出错"><a href="#fatal-HttpRequestException-encountered-发送请求时出错" class="headerlink" title="fatal: HttpRequestException encountered. 发送请求时出错"></a>fatal: HttpRequestException encountered. 发送请求时出错</h2><p><img src="/2020/03/14/git-exception/1.png" alt></p>
 <p>目前俩种解决方式</p>
 <h3 id="下载Git-Credential-Manager-for-Windows最新版"><a href="#下载Git-Credential-Manager-for-Windows最新版" class="headerlink" title="下载Git-Credential-Manager-for-Windows最新版"></a>下载Git-Credential-Manager-for-Windows最新版</h3><p>Github 禁用了TLS v1.0 and v1.1，必须更新Windows的git凭证管理器。</p>
 <p>更新管理器的方式有俩种</p>
@@ -1115,7 +1208,17 @@
 <li><a href="https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases" target="_blank" rel="noopener">https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases</a> 直接下载</li>
 <li><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">https://git-scm.com/downloads</a> 更新git客户端</li>
 </ol>
-<h3 id="设置git-config"><a href="#设置git-config" class="headerlink" title="设置git config"></a>设置git config</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1.查看git配置信息</span></span><br><span class="line">$ git config --list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.查看git用户名、密码、邮箱的配置</span></span><br><span class="line">$ git config user.name</span><br><span class="line">$ git config user.password</span><br><span class="line">$ git config user.email</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.设置git用户名、密码、邮箱的配置</span></span><br><span class="line">$ git config user.name <span class="string">"freedom"</span></span><br><span class="line">$ git config user.password <span class="string">"123456"</span></span><br><span class="line">$ git config user.email <span class="string">"1548429568@qq.com"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.设置git用户名、密码、邮箱的配置（全局配置）</span></span><br><span class="line">$ git config --global user.name 用户命</span><br><span class="line">$ git config --global user.name freedom</span><br><span class="line">$ git config --global user.password 密码</span><br><span class="line">$ git config --global user.password abc0506abc</span><br><span class="line">$ git config --global user.email 邮箱</span><br><span class="line">$ git config --global user.email <span class="string">"1548429568@qq.com</span></span><br></pre></td></tr></table></figure>
+<h3 id="设置git-config"><a href="#设置git-config" class="headerlink" title="设置git config"></a>设置git config</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1.查看git配置信息</span></span><br><span class="line">$ git config --list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.查看git用户名、密码、邮箱的配置</span></span><br><span class="line">$ git config user.name</span><br><span class="line">$ git config user.password</span><br><span class="line">$ git config user.email</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.设置git用户名、密码、邮箱的配置</span></span><br><span class="line">$ git config user.name <span class="string">"freedom"</span></span><br><span class="line">$ git config user.password <span class="string">"123456"</span></span><br><span class="line">$ git config user.email <span class="string">"1548429568@qq.com"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.设置git用户名、密码、邮箱的配置（全局配置）</span></span><br><span class="line">$ git config --global user.name 用户命</span><br><span class="line">$ git config --global user.name freedom</span><br><span class="line">$ git config --global user.password 密码</span><br><span class="line">$ git config --global user.password abc0506abc</span><br><span class="line">$ git config --global user.email 邮箱</span><br><span class="line">$ git config --global user.email <span class="string">"1548429568@qq.com"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4.设置代理</span></span><br><span class="line">git config --global https.proxy http://127.0.0.1:1080</span><br><span class="line"></span><br><span class="line">git config --global https.proxy https://127.0.0.1:1080</span><br><span class="line"></span><br><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line"></span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看git config列表</span></span><br><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+
+<h2 id="git-commit后撤销"><a href="#git-commit后撤销" class="headerlink" title="git commit后撤销"></a>git commit后撤销</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reset --soft HEAD^</span><br></pre></td></tr></table></figure>
+
+<p>这样就成功的撤销了你的commit</p>
+<blockquote>
+<p>注意，仅仅是撤回commit操作，您写的代码仍然保留。</p>
+</blockquote>
+<p>HEAD^的意思是上一个版本，也可以写成HEAD~1</p>
+<p>如果你进行了2次commit，想都撤回，可以使用HEAD~2</p>
+<h2 id="git-stash-暂存"><a href="#git-stash-暂存" class="headerlink" title="git stash 暂存"></a>git stash 暂存</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git stash 暂存</span><br><span class="line"></span><br><span class="line">git stash pop 返回上次数据</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>git</category>
@@ -1236,28 +1339,32 @@
     <content><![CDATA[<blockquote>
 <p>由于 V2Ray 没有自带 GUI 配置界面，所以说客户端使用还是有一点不方便。而V2RayN 则是 windows下 平台一个对新手比较友好的 V2Ray GUI 客户端。</p>
 </blockquote>
-<h2 id="下载v2ray-core-链接"><a href="#下载v2ray-core-链接" class="headerlink" title="下载v2ray-core 链接"></a>下载v2ray-core <strong><sup><a href="https://github.com/v2ray/v2ray-core/releases" target="_blank" rel="noopener">链接</a></strong></h2><p>下载<code>v2ray-windows-64.zip</code>(系统是32位的就下载v2ray-windows-32.zip)</p>
-<img src="/2020/03/14/v2rayN/1.PNG" class="" title="下载v2ray-windows-64.zip% } 解压到&#96;v2ray&#96;文件夹下(自己创建的的文件夹：例如D:\v2ray): ## 下载 v2RayN **&lt;sup&gt;[链接](https:&#x2F;&#x2F;github.com&#x2F;2dust&#x2F;v2rayN&#x2F;releases)** 下载&#96;v2rayN.zip&#96;,解压后有&#96;v2rayN.exe&#96;和&#96;zh-Hans&#96;2个目录 {% asset_img 2.PNG v2ray目录">
+<h2 id="下载v2ray-core-链接"><a href="#下载v2ray-core-链接" class="headerlink" title="下载v2ray-core 链接"></a>下载v2ray-core <strong><sup><a href="https://github.com/v2ray/v2ray-core/releases" target="_blank" rel="noopener">链接</a></sup></strong></h2><p>下载<code>v2ray-windows-64.zip</code>(系统是32位的就下载v2ray-windows-32.zip)</p>
+<img src="/2020/03/14/v2rayN/03/14/v2rayN/1.PNG" class title="下载v2ray-windows-64.zip">
+
+<p>解压到<code>v2ray</code>文件夹下(自己创建的的文件夹：例如D:\v2ray):</p>
+<h2 id="下载-v2RayN-链接"><a href="#下载-v2RayN-链接" class="headerlink" title="下载 v2RayN 链接"></a>下载 v2RayN <strong><sup><a href="https://github.com/2dust/v2rayN/releases" target="_blank" rel="noopener">链接</a></sup></strong></h2><p>下载<code>v2rayN.zip</code>,解压后有<code>v2rayN.exe</code>和<code>zh-Hans</code>2个目录</p>
+<img src="/2020/03/14/v2rayN/03/14/v2rayN/2.PNG" class title="v2ray目录">
 
 <p>v2rayN.exe: v2rayN运行器</p>
 <p>zh-Hans: 汉化版本</p>
 <p>全部copy到<code>v2ray</code>(上面创建的目录)文件夹下，启动<code>v2rayN.exe</code>,得到</p>
-<img src="/2020/03/14/v2rayN/3.PNG" class="" title="启动v2rayN.exe">
+<img src="/2020/03/14/v2rayN/03/14/v2rayN/3.PNG" class title="启动v2rayN.exe">
 
 <h2 id="启动v2rayN"><a href="#启动v2rayN" class="headerlink" title="启动v2rayN"></a>启动v2rayN</h2><p>程序运行到这已经全部安装完毕，接下来就是启动<code>v2rayN</code>了</p>
 <p>右下角会有一个<code>V</code>标志,这个就是<code>v2rayN</code></p>
-<img src="/2020/03/14/v2rayN/4.PNG" class="" title="启动v2rayN.exe2">
+<img src="/2020/03/14/v2rayN/03/14/v2rayN/4.PNG" class title="启动v2rayN.exe2">
 
 <h3 id="启动socks5代理"><a href="#启动socks5代理" class="headerlink" title="启动socks5代理"></a>启动socks5代理</h3><p>例如trojan…，都是socks5代理模式，这里就以trojan为例</p>
-<img src="/2020/03/14/v2rayN/5.PNG" class="" title="选择代理">
+<img src="/2020/03/14/v2rayN/03/14/v2rayN/5.PNG" class title="选择代理">
 
 <p>选择服务器-&gt;添加[socks]服务器-&gt;</p>
-<img src="/2020/03/14/v2rayN/6.PNG" class="" title="添加服务器">
+<img src="/2020/03/14/v2rayN/03/14/v2rayN/6.PNG" class title="添加服务器">
 
 <p>服务器: 127.0.0.1</p>
 <p>端口: 1080(默认1080，config.json文件下有具体信息)</p>
 <p>别名(remarks): 000000 (随便写)</p>
-<img src="/2020/03/14/v2rayN/7.png" class="" title="添加服务器">
+<img src="/2020/03/14/v2rayN/03/14/v2rayN/7.png" class title="添加服务器">
 
 <p>确定，地下的控制台显示success表示代理已经成功了，大功告成。</p>
 

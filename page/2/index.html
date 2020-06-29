@@ -163,6 +163,143 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/24/flutter-layout/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xfFelix">
+      <meta itemprop="description" content="一直坚持永远比三分钟热度要重要得多，就算每天努力一点点也比一开始努力后来熄火要好，成功总是积少成多，厚积薄发">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xfFelix的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/24/flutter-layout/" class="post-title-link" itemprop="url">flutter-layout</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-24 11:41:44" itemprop="dateCreated datePublished" datetime="2020-03-24T11:41:44+08:00">2020-03-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-22 23:43:34" itemprop="dateModified" datetime="2020-05-22T23:43:34+08:00">2020-05-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/flutter/" itemprop="url" rel="index"><span itemprop="name">flutter</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>LinerLayout在Flutter中等价于什么（Android）？</li>
+<li>RelativeLayout在Flutter中等价于什么（Android）？</li>
+<li>如何使用widget定义布局属性？</li>
+<li>如何分层布局？</li>
+<li>如何设置布局样式？</li>
+<li>ScrollView在Flutter中等价于什么？</li>
+<li>谁是Flutter的列表组件？</li>
+<li>如何知道点击了列表中的哪个item？</li>
+<li>如何动态更新ListView？</li>
+</ul>
+<h2 id="LinerLayout在Flutter中等价于什么（Android）？"><a href="#LinerLayout在Flutter中等价于什么（Android）？" class="headerlink" title="LinerLayout在Flutter中等价于什么（Android）？"></a>LinerLayout在Flutter中等价于什么（Android）？</h2><p>在Android中，使用LinerLayout来使你的控件呈现水平或者垂直排列。在Flutter中，你可以使用Row或者Column widget来实现相同的结果：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@override</span><br><span class="line">Widget build(BuildContext context) &#123;</span><br><span class="line">  <span class="keyword">return</span> Row(</span><br><span class="line">    mainAxisAlignment: MainAxisAlignment.center,</span><br><span class="line">    children: <span class="xml"><span class="tag">&lt;<span class="name">Widget</span>&gt;</span>[</span></span><br><span class="line"><span class="xml">      Text('Row one'),</span></span><br><span class="line"><span class="xml">      Text('Row two'),</span></span><br><span class="line"><span class="xml">      Text('Row three'),</span></span><br><span class="line"><span class="xml">      Text('Row four'),</span></span><br><span class="line"><span class="xml">    ]</span></span><br><span class="line"><span class="xml">  );</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@override</span><br><span class="line">Widget build(BuildContext context) &#123;</span><br><span class="line">  <span class="keyword">return</span> Column(</span><br><span class="line">    mainAxisAlignment: MainAxisAlignment.center,</span><br><span class="line">    children: <span class="xml"><span class="tag">&lt;<span class="name">Widget</span>&gt;</span>[</span></span><br><span class="line"><span class="xml">      Text('Row one'),</span></span><br><span class="line"><span class="xml">      Text('Row two'),</span></span><br><span class="line"><span class="xml">      Text('Row three'),</span></span><br><span class="line"><span class="xml">      Text('Row four'),</span></span><br><span class="line"><span class="xml">    ]</span></span><br><span class="line"><span class="xml">  );</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="RelativeLayout-在Flutter中等价于什么（Android）"><a href="#RelativeLayout-在Flutter中等价于什么（Android）" class="headerlink" title="RelativeLayout 在Flutter中等价于什么（Android）"></a>RelativeLayout 在Flutter中等价于什么（Android）</h2><p>RelativeLayout用于使widget相对于彼此的位置排列。在Flutter中，有几种方法可以实现相同的结果。</p>
+<p>可以通过使用<code>Column</code>,<code>Row</code>,<code>Stack</code>的组合来实现<code>RelativeLayout</code>的效果。可以为widget构造函数指定相对于父组件的布局规则。</p>
+<h2 id="如何使用widget定义布局属性？"><a href="#如何使用widget定义布局属性？" class="headerlink" title="如何使用widget定义布局属性？"></a>如何使用widget定义布局属性？</h2><p>在RN中，大多数布局都可以使用传递给特定的组件的props来完成。例如，您可以使用View组件上的样式props来指定flexbox属性。要在列中排列组件，您可以指定一个prop，例如：flexDirection: column。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;View style=&#123;</span><br><span class="line">  &#123;</span><br><span class="line">    flex: <span class="number">1</span>,</span><br><span class="line">    flexDirection: <span class="string">"column"</span>,</span><br><span class="line">    justifyContent: <span class="string">"space-between"</span>,</span><br><span class="line">    alignItems: <span class="string">"center"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在Flutter中，布局主要由专门设计用于提供布局的小部件定义，并结合控件widget及其样式属性</p>
+<p>例如：列和行widget控制一个数组中的条目并且分别垂直和水平对齐它们，Cotainer widget控制一个布局的样式和属性，并且Center widget负责剧中它的子widget。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Center(</span><br><span class="line">  child: Column(</span><br><span class="line">    children: <span class="xml"><span class="tag">&lt;<span class="name">Widget</span>&gt;</span>[</span></span><br><span class="line"><span class="xml">      Container(</span></span><br><span class="line"><span class="xml">        color: Colors.red,</span></span><br><span class="line"><span class="xml">        width: 100,</span></span><br><span class="line"><span class="xml">        height: 100</span></span><br><span class="line"><span class="xml">      ),</span></span><br><span class="line"><span class="xml">      Container(</span></span><br><span class="line"><span class="xml">        color: Colors.blue,</span></span><br><span class="line"><span class="xml">        width: 100,</span></span><br><span class="line"><span class="xml">        height: 100</span></span><br><span class="line"><span class="xml">      ),</span></span><br><span class="line"><span class="xml">      Container(</span></span><br><span class="line"><span class="xml">        color: Colors.green,</span></span><br><span class="line"><span class="xml">        width: 100,</span></span><br><span class="line"><span class="xml">        height: 100</span></span><br><span class="line"><span class="xml">      ),</span></span><br><span class="line"><span class="xml">    ]</span></span><br><span class="line"><span class="xml">  )</span></span><br><span class="line"><span class="xml">)</span></span><br></pre></td></tr></table></figure>
+
+<p>Flutter的核心widget库中提供了各种布局小部件。例如：<code>Padding</code>, <code>Align</code>和<code>Stack</code></p>
+<h2 id="如何分层布局"><a href="#如何分层布局" class="headerlink" title="如何分层布局"></a>如何分层布局</h2><p>在React Native中，组件可以使用absolute定位来分层</p>
+<p>Flutter使用<code>Stack</code> widget控制子widget在一层。子widget可以完全或者部分覆盖基础widget。</p>
+<p><code>Stack</code>控件将其子项相对于其框的边缘定位。如果您只想重叠多个子窗口小部件，这个类很有用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Stack(</span><br><span class="line">  alignment: Alignment(<span class="number">0.6</span>,<span class="number">0.6</span>),</span><br><span class="line">  children: <span class="xml"><span class="tag">&lt;<span class="name">Widget</span>&gt;</span>[</span></span><br><span class="line"><span class="xml">    CircleAvatar(</span></span><br><span class="line"><span class="xml">      backgroundImage: NetworkImage("https://avatars3.githubusercontent.com/u/14101776?v=4")</span></span><br><span class="line"><span class="xml">    ),</span></span><br><span class="line"><span class="xml">    Container(</span></span><br><span class="line"><span class="xml">      decoration: BoxDecoration(color: Colors.black45),</span></span><br><span class="line"><span class="xml">      child: Text('Flutter')</span></span><br><span class="line"><span class="xml">    )</span></span><br><span class="line"><span class="xml">  ]</span></span><br><span class="line"><span class="xml">)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="如何设置布局样式"><a href="#如何设置布局样式" class="headerlink" title="如何设置布局样式"></a>如何设置布局样式</h2><p>Flutter没有内联样式和Stylesheet.create的概念，它有一套独特的布局系统，Padding、<code>Center</code>、<code>Column</code>、<code>Row</code>、等都是widget，另外组件也通常接受用于布局样式的构造参数：比如<code>Text</code>widget可以使用<code>TextStyle</code>属性。如果要在多个位置使用相同的文本样式，你可以创建一个<code>TextStyle</code>类并应用于各个<code>Text</code>widget中</p>
+<h2 id="ScrollView在Flutter中等价于什么？"><a href="#ScrollView在Flutter中等价于什么？" class="headerlink" title="ScrollView在Flutter中等价于什么？"></a>ScrollView在Flutter中等价于什么？</h2><p>在Android中，<code>ScrollView</code>允许您包含一个子控件，以便在用户设备的屏幕比控件内容小的情况下，使它们可以滚动。在Flutter中，最简单的方法是使用ListView。但在Flutter中，一个<code>ListView</code>既是一个ScrollView，也是一个Android ListView</p>
+<p>在iOS中，你给view包裹上ScrollView来允许用户在需要时滚动你的内容。在Flutter中，最简单的方法是使用ListView widget。它表现的既和iOS中的ScrollView一致，也能和TableView一致，因为你可以给它的widget做垂直排布。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@override</span><br><span class="line">Widget build(BuildContext context) &#123;</span><br><span class="line">  <span class="keyword">return</span> ListView(</span><br><span class="line">    children: <span class="xml"><span class="tag">&lt;<span class="name">Widget</span>&gt;</span>[</span></span><br><span class="line"><span class="xml">      Text('Row One'),</span></span><br><span class="line"><span class="xml">      Text('Row Two'),</span></span><br><span class="line"><span class="xml">      Text('Row Three'),</span></span><br><span class="line"><span class="xml">      Text('Row Four'),</span></span><br><span class="line"><span class="xml">    ]</span></span><br><span class="line"><span class="xml">  );</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="谁是Flutter的列表组件？"><a href="#谁是Flutter的列表组件？" class="headerlink" title="谁是Flutter的列表组件？"></a>谁是Flutter的列表组件？</h2><ul>
+<li>在iOS中，通常用<code>UITableView</code>或<code>UICollectionView</code>来展示一个列表；</li>
+<li>在Android中，通常用<code>ListView</code>或<code>RecyclerView</code>来展示一个列表；</li>
+<li>在RN中，通常用<code>FlatList</code>或者<code>SectionList</code>来展示一个列表；</li>
+</ul>
+<p>在Flutter中，你可以用ListView来达到相似的目的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/material.dart'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() =&gt; runApp(Simple());</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Simple</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span></span>&#123;</span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> implement build</span></span><br><span class="line">    <span class="keyword">return</span> MaterialApp(</span><br><span class="line">      title: <span class="string">'Simple App'</span>,</span><br><span class="line">      theme: ThemeData(</span><br><span class="line">        primarySwatch: Colors.blue</span><br><span class="line">      ),</span><br><span class="line">      home: SampleAppPage(),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SampleAppPage</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  _SampleAppState createState() =&gt; _SampleAppState();</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_SampleAppState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">SampleAppPage</span>&gt; </span>&#123;</span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> implement build</span></span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      appBar: AppBar(title: Text(<span class="string">'Sample App'</span>),),</span><br><span class="line">      body: ListView(</span><br><span class="line">        children: _getListData(),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  List&lt;Widget&gt; _getListData () &#123;</span><br><span class="line">    List&lt;Widget&gt; widgets = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">      widgets.add(Padding(padding: EdgeInsets.all(<span class="number">10</span>), <span class="attr">child</span>: Text(<span class="string">'Row $i'</span>),));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> widgets;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在Android ListView中，您可以创建一个适配器，然后您可以将它传递给ListView，该适配器将使用适配器返回的内容来展示每一行，从上面的代码不难看出，在Flutter中没有adapter的等价物，我们唯一要做的就是控制这个list中要展示的数据。</p>
+</blockquote>
+<h2 id="如何知道点击了列表中的哪个item？"><a href="#如何知道点击了列表中的哪个item？" class="headerlink" title="如何知道点击了列表中的哪个item？"></a>如何知道点击了列表中的哪个item？</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/material.dart'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() =&gt; runApp(Simple());</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Simple</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span></span>&#123;</span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> implement build</span></span><br><span class="line">    <span class="keyword">return</span> MaterialApp(</span><br><span class="line">      title: <span class="string">'Simple App'</span>,</span><br><span class="line">      theme: ThemeData(</span><br><span class="line">        primarySwatch: Colors.blue</span><br><span class="line">      ),</span><br><span class="line">      home: SampleAppPage(),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SampleAppPage</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  _SampleAppState createState() =&gt; _SampleAppState();</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_SampleAppState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">SampleAppPage</span>&gt; </span>&#123;</span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> implement build</span></span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      appBar: AppBar(title: Text(<span class="string">'Sample App'</span>),),</span><br><span class="line">      body: ListView(</span><br><span class="line">        children: _getListData(),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  List&lt;Widget&gt; _getListData () &#123;</span><br><span class="line">    List&lt;Widget&gt; widgets = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">      widgets.add(</span><br><span class="line">        GestureDetector(</span><br><span class="line">         child: Padding(padding: EdgeInsets.all(<span class="number">10</span>), <span class="attr">child</span>: Text(<span class="string">'Row $i'</span>),),</span><br><span class="line">         onTap: () &#123;</span><br><span class="line">           print(<span class="string">'row tapped'</span>);</span><br><span class="line">         &#125;, </span><br><span class="line">        )</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> widgets;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上述代码中我们通过<code>GestureDetector</code>来监听item的点击事件</p>
+<h2 id="如何动态更新ListView？"><a href="#如何动态更新ListView？" class="headerlink" title="如何动态更新ListView？"></a>如何动态更新ListView？</h2><ul>
+<li>在iOS中，你改变列表的数据，并通过reloadData()方法来通知table或是collection view；</li>
+<li>在Android中，改变列表数据后通过notifyDataSetChanged来更新列表；</li>
+</ul>
+<p>在Flutter中，如果你想通过<code>setState()</code>方法来更新widget列表，你会很快发现你的数据展示并没有变化。这是因为当<code>setState()</code>被调用时，Flutter渲染引擎会去检查widget树来查看是否有什么地方被改变了。当它得到你的<code>ListView</code>时，它会使用一个<code>==</code>判断，并且发现俩个<code>ListView</code>时相同的。没有什么东西是变了的，因此更新不是必须的。</p>
+<p><strong>一个更新ListView的简单方法是，在setState()中创建一个新的List，并把旧List的数据拷贝给新的List</strong>。虽然这样很简单，但当数据集很大时，并不推荐这样做，来一起看一个demo：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/material.dart'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() =&gt; runApp(Simple());</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Simple</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span></span>&#123;</span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> implement build</span></span><br><span class="line">    <span class="keyword">return</span> MaterialApp(</span><br><span class="line">      title: <span class="string">'Simple App'</span>,</span><br><span class="line">      theme: ThemeData(</span><br><span class="line">        primarySwatch: Colors.blue</span><br><span class="line">      ),</span><br><span class="line">      home: SampleAppPage(),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SampleAppPage</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  _SampleAppState createState() =&gt; _SampleAppState();</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_SampleAppState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">SampleAppPage</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">  List&lt;Widget&gt; widgets = [];</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  <span class="keyword">void</span> initState() &#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> implement initState</span></span><br><span class="line">    <span class="keyword">super</span>.initState();</span><br><span class="line">    <span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">      widgets.add(getRow(i));</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> implement build</span></span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      appBar: AppBar(title: Text(<span class="string">'Sample App'</span>),),</span><br><span class="line">      body: ListView(</span><br><span class="line">        children: widgets,</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Widget getRow(int i)&#123;</span><br><span class="line">    <span class="keyword">return</span> GestureDetector(</span><br><span class="line">      child: Padding(</span><br><span class="line">        child: Text(<span class="string">'Row $i'</span>),</span><br><span class="line">        padding: EdgeInsets.all(<span class="number">10</span>),</span><br><span class="line">      ),</span><br><span class="line">      onTap: () &#123;</span><br><span class="line">        setState(() &#123;</span><br><span class="line">          widgets = List.from(widgets);</span><br><span class="line">          widgets.add(getRow(widgets.length + <span class="number">1</span>));</span><br><span class="line">          print(<span class="string">'row $i'</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;,</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一个推荐的，高效的且有效的做法是，使用<code>ListView.Builder</code>来构建列表。这个方法在你想要构建动态列表，或是列表拥有大量数据时会非常好用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/material.dart'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() =&gt; runApp(Simple());</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Simple</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span></span>&#123;</span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> implement build</span></span><br><span class="line">    <span class="keyword">return</span> MaterialApp(</span><br><span class="line">      title: <span class="string">'Simple App'</span>,</span><br><span class="line">      theme: ThemeData(</span><br><span class="line">        primarySwatch: Colors.blue</span><br><span class="line">      ),</span><br><span class="line">      home: SampleAppPage(),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SampleAppPage</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  _SampleAppState createState() =&gt; _SampleAppState();</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_SampleAppState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">SampleAppPage</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">  List&lt;Widget&gt; widgets = [];</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  <span class="keyword">void</span> initState() &#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> implement initState</span></span><br><span class="line">    <span class="keyword">super</span>.initState();</span><br><span class="line">    <span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">      widgets.add(getRow(i));</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> implement build</span></span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      appBar: AppBar(title: Text(<span class="string">'Sample App'</span>),),</span><br><span class="line">      body: ListView.builder(</span><br><span class="line">        itemCount: widgets.length,</span><br><span class="line">        itemBuilder: (BuildContext context, int position) &#123;</span><br><span class="line">          <span class="keyword">return</span> getRow(position);</span><br><span class="line">        &#125;,</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Widget getRow(int i)&#123;</span><br><span class="line">    <span class="keyword">return</span> GestureDetector(</span><br><span class="line">      child: Padding(</span><br><span class="line">        child: Text(<span class="string">'Row $i'</span>),</span><br><span class="line">        padding: EdgeInsets.all(<span class="number">10</span>),</span><br><span class="line">      ),</span><br><span class="line">      onTap: () &#123;</span><br><span class="line">        setState(() &#123;</span><br><span class="line">          widgets.add(getRow(widgets.length + <span class="number">1</span>));</span><br><span class="line">          print(<span class="string">'row $i'</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;,</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>与创建一个<code>ListView</code>不同，创建一个<code>ListView.builder</code>接收俩个主要的参数：列表的初始长度，和一个itemBuilder方法。</p>
+<p>itemBuilder方法和iOS的<code>cellForItemAt</code>代理方法非常类似，它接受一个位置，并且返回在这个位置上你希望渲染的cell。</p>
+<p>最后，也是最重要的，注意<code>onTap()</code>函数里并没有重新创建一个<code>List</code>，而是<code>add</code>了一个widget。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/23/flutter-widget/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1133,10 +1270,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-03-14 22:34:20 / 修改时间：22:44:20" itemprop="dateCreated datePublished" datetime="2020-03-14T22:34:20+08:00">2020-03-14</time>
+              <time title="创建时间：2020-03-14 22:34:20" itemprop="dateCreated datePublished" datetime="2020-03-14T22:34:20+08:00">2020-03-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-17 22:56:01" itemprop="dateModified" datetime="2020-06-17T22:56:01+08:00">2020-06-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -1158,8 +1301,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="fatal-HttpRequestException-encountered-发送请求时出错"><a href="#fatal-HttpRequestException-encountered-发送请求时出错" class="headerlink" title="fatal: HttpRequestException encountered. 发送请求时出错"></a>fatal: HttpRequestException encountered. 发送请求时出错</h2><img src="/2020/03/14/git-exception/1.png" class="" title="HttpRequestException encountered">
-
+          <h2 id="Git-流程图"><a href="#Git-流程图" class="headerlink" title="Git 流程图"></a>Git 流程图</h2><p><img src="/2020/03/14/git-exception/2.png" alt></p>
+<ul>
+<li>Workspace：工作区</li>
+<li>Index / Stage：暂存区</li>
+<li>Repository：仓库区（或本地仓库）</li>
+<li>Remote：远程仓库</li>
+</ul>
+<h2 id="fatal-HttpRequestException-encountered-发送请求时出错"><a href="#fatal-HttpRequestException-encountered-发送请求时出错" class="headerlink" title="fatal: HttpRequestException encountered. 发送请求时出错"></a>fatal: HttpRequestException encountered. 发送请求时出错</h2><p><img src="/2020/03/14/git-exception/1.png" alt></p>
 <p>目前俩种解决方式</p>
 <h3 id="下载Git-Credential-Manager-for-Windows最新版"><a href="#下载Git-Credential-Manager-for-Windows最新版" class="headerlink" title="下载Git-Credential-Manager-for-Windows最新版"></a>下载Git-Credential-Manager-for-Windows最新版</h3><p>Github 禁用了TLS v1.0 and v1.1，必须更新Windows的git凭证管理器。</p>
 <p>更新管理器的方式有俩种</p>
@@ -1167,89 +1316,17 @@
 <li><a href="https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases" target="_blank" rel="noopener">https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases</a> 直接下载</li>
 <li><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">https://git-scm.com/downloads</a> 更新git客户端</li>
 </ol>
-<h3 id="设置git-config"><a href="#设置git-config" class="headerlink" title="设置git config"></a>设置git config</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.查看git配置信息</span></span><br><span class="line">$ git config --list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.查看git用户名、密码、邮箱的配置</span></span><br><span class="line">$ git config user.name</span><br><span class="line">$ git config user.password</span><br><span class="line">$ git config user.email</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.设置git用户名、密码、邮箱的配置</span></span><br><span class="line">$ git config user.name <span class="string">"freedom"</span></span><br><span class="line">$ git config user.password <span class="string">"123456"</span></span><br><span class="line">$ git config user.email <span class="string">"1548429568@qq.com"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.设置git用户名、密码、邮箱的配置（全局配置）</span></span><br><span class="line">$ git config --global user.name 用户命</span><br><span class="line">$ git config --global user.name freedom</span><br><span class="line">$ git config --global user.password 密码</span><br><span class="line">$ git config --global user.password abc0506abc</span><br><span class="line">$ git config --global user.email 邮箱</span><br><span class="line">$ git config --global user.email <span class="string">"1548429568@qq.com</span></span><br></pre></td></tr></table></figure>
+<h3 id="设置git-config"><a href="#设置git-config" class="headerlink" title="设置git config"></a>设置git config</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.查看git配置信息</span></span><br><span class="line">$ git config --list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.查看git用户名、密码、邮箱的配置</span></span><br><span class="line">$ git config user.name</span><br><span class="line">$ git config user.password</span><br><span class="line">$ git config user.email</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.设置git用户名、密码、邮箱的配置</span></span><br><span class="line">$ git config user.name <span class="string">"freedom"</span></span><br><span class="line">$ git config user.password <span class="string">"123456"</span></span><br><span class="line">$ git config user.email <span class="string">"1548429568@qq.com"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.设置git用户名、密码、邮箱的配置（全局配置）</span></span><br><span class="line">$ git config --global user.name 用户命</span><br><span class="line">$ git config --global user.name freedom</span><br><span class="line">$ git config --global user.password 密码</span><br><span class="line">$ git config --global user.password abc0506abc</span><br><span class="line">$ git config --global user.email 邮箱</span><br><span class="line">$ git config --global user.email <span class="string">"1548429568@qq.com"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4.设置代理</span></span><br><span class="line">git config --global https.proxy http://127.0.0.1:1080</span><br><span class="line"></span><br><span class="line">git config --global https.proxy https://127.0.0.1:1080</span><br><span class="line"></span><br><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line"></span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看git config列表</span></span><br><span class="line">git config --list</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
+<h2 id="git-commit后撤销"><a href="#git-commit后撤销" class="headerlink" title="git commit后撤销"></a>git commit后撤销</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --soft HEAD^</span><br></pre></td></tr></table></figure>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/14/bash-v2rayN/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="xfFelix">
-      <meta itemprop="description" content="一直坚持永远比三分钟热度要重要得多，就算每天努力一点点也比一开始努力后来熄火要好，成功总是积少成多，厚积薄发">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xfFelix的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/14/bash-v2rayN/" class="post-title-link" itemprop="url">Cmder下启动v2ray命令</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-14 21:49:32" itemprop="dateCreated datePublished" datetime="2020-03-14T21:49:32+08:00">2020-03-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-17 23:02:42" itemprop="dateModified" datetime="2020-03-17T23:02:42+08:00">2020-03-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Bash/" itemprop="url" rel="index"><span itemprop="name">Bash</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Cmder简介"><a href="#Cmder简介" class="headerlink" title="Cmder简介 "></a>Cmder简介 <strong><sup><a href="/2020/03/14/cmder/" title="#">#</a></strong></h2><h2 id="Cmder进阶"><a href="#Cmder进阶" class="headerlink" title="Cmder进阶"></a>Cmder进阶</h2><h2 id="Cmder设置v2rayN命令"><a href="#Cmder设置v2rayN命令" class="headerlink" title="Cmder设置v2rayN命令"></a>Cmder设置v2rayN命令</h2><p>cmder在<code>bash</code>命令模式下，可以在</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmder/config/profie.d/</span><br></pre></td></tr></table></figure>
-
-<p>文件目录下创建<code>xxx.sh</code>文件,例如：start.sh</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim start.sh</span><br><span class="line"><span class="built_in">alias</span> startv2rayN=<span class="string">'cd /目录/ &amp;&amp; start ./v2rayN.exe &amp;'</span></span><br></pre></td></tr></table></figure>
-
-<img src="/2020/03/14/bash-v2rayN/1.png" class="" title="编辑start.sh">
-
-<p>保存退出之后，重启cmder。就会发现命令已经生效了，试试启动这个命令，成功打开v2ray.exe.</p>
+<p>这样就成功的撤销了你的commit</p>
+<blockquote>
+<p>注意，仅仅是撤回commit操作，您写的代码仍然保留。</p>
+</blockquote>
+<p>HEAD^的意思是上一个版本，也可以写成HEAD~1</p>
+<p>如果你进行了2次commit，想都撤回，可以使用HEAD~2</p>
+<h2 id="git-stash-暂存"><a href="#git-stash-暂存" class="headerlink" title="git stash 暂存"></a>git stash 暂存</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git stash 暂存</span><br><span class="line"></span><br><span class="line">git stash pop 返回上次数据</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1337,7 +1414,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
